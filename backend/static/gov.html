@@ -1,0 +1,100 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>InfraSignal Monitoring</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"><script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+body{margin:0;font:13px/1.45 Inter,system-ui,sans-serif;background:#0f1720;color:#dfe6ee}
+#login{max-width:340px;margin:12vh auto;background:#16212c;padding:24px;border-radius:8px}
+input,select,textarea{background:#0f1720;color:#dfe6ee;border:1px solid #2b3a48;padding:7px;border-radius:4px}
+button{background:#2f7bd8;color:#fff;border:0;padding:7px 12px;border-radius:4px;cursor:pointer}
+#app{display:none;grid-template-columns:200px 1fr;height:100vh}aside{background:#16212c;padding:12px}
+aside a{display:block;padding:8px;color:#9fb3c8;cursor:pointer;border-radius:4px}aside a.on{background:#22313f;color:#fff}
+main{overflow:auto;padding:18px}.kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.k{background:#16212c;padding:12px;border-radius:6px}.k b{font-size:22px;display:block;color:#fff}
+table{width:100%;border-collapse:collapse;margin-top:10px}td,th{border-bottom:1px solid #22313f;padding:6px;text-align:left;vertical-align:top}
+th{color:#9fb3c8;font-weight:500}tr.c{cursor:pointer}tr.c:hover{background:#18242f}
+.high{color:#ff6b6b}.medium{color:#f5b041}.low{color:#9fb3c8}.tag{background:#22313f;padding:1px 6px;border-radius:3px}
+.box{background:#16212c;padding:12px;border-radius:6px;margin:10px 0}.no{color:#7c8b99}.yes{color:#4cd38a}#gmap{height:75vh}
+pre{white-space:pre-wrap;font-size:11px;color:#9fb3c8}
+</style></head><body>
+<div id="login"><h3>InfraSignal Monitoring Portal</h3><p style="color:#9fb3c8">Prototype roles only. These are not real government accounts.</p>
+<input id="em" placeholder="email" style="width:100%"><br><br><input id="pw" type="password" placeholder="password" style="width:100%"><br><br>
+<button onclick="login()">Sign in</button><p id="le"></p></div>
+<div id="app"><aside><b>InfraSignal</b><div id="who" style="color:#7c8b99;margin-bottom:10px"></div><div id="navl"></div></aside><main id="v"></main></div>
+<script>
+let T=localStorage.getItem('gtok'),R=localStorage.getItem('grole');
+const V=()=>document.getElementById('v');
+const api=async(p,o={})=>{o.headers={...(o.headers||{}),Authorization:'Bearer '+T};const r=await fetch(p,o);if(r.status==401){logout();throw 0}
+ const j=await r.json().catch(()=>({}));if(!r.ok){alert(j.detail||'Error');throw j}return j};
+const form=o=>{const f=new FormData();Object.entries(o).forEach(([k,v])=>v!=null&&f.append(k,v));return f};
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const inr=n=>n==null?'<span class=no>missing</span>':'\u20b9'+Number(n).toLocaleString('en-IN');
+async function login(){const r=await fetch('/api/auth/login',{method:'POST',body:form({email:em.value,password:pw.value})});const j=await r.json();
+ if(!r.ok)return le.textContent=j.detail;T=j.token;R=j.role;localStorage.setItem('gtok',T);localStorage.setItem('grole',R);boot()}
+function logout(){localStorage.removeItem('gtok');location.reload()}
+const PAGES={Dashboard:dash,Roadworks:rws,Map:gmap,Reports:reps,Clusters:clus,Alerts:alerts,Matches:links};
+const ADMIN={Imports:imports,Documents:docs,Users:users,Audit:auditv};
+function boot(){if(!T)return;login_el=document.getElementById('login');login_el.style.display='none';app.style.display='grid';who.textContent=R;
+ const all={...PAGES,...(R=='admin'?ADMIN:{})};navl.innerHTML=Object.keys(all).map(k=>`<a data-p="${k}">${k}</a>`).join('')+'<a onclick="logout()">Sign out</a>';
+ navl.querySelectorAll('[data-p]').forEach(a=>a.onclick=()=>{navl.querySelectorAll('a').forEach(x=>x.classList.remove('on'));a.classList.add('on');all[a.dataset.p]()});dash()}
+async function dash(){const d=await api('/api/gov/dashboard');const k=(l,v)=>`<div class=k>${l}<b>${v}</b></div>`;
+ V().innerHTML=`<h2>Monitoring dashboard</h2><p class=no>All figures are computed from imported records. ${d.demo_reports} of ${d.reports} citizen reports are demonstration data.</p>
+ <div class=kpis>${k('Roadwork records',d.roadworks)+k('With tender ID',d.with_tender_id)+k('With work order ID',d.with_work_order)+k('Contractors',d.contractors)+k('Bills',d.bills)+k('Payments',d.payments)+k('Total paid',inr(d.paid_total))+k('Citizen reports',d.reports)+k('Active clusters',d.clusters)+k('Open alerts',d.open_alerts)}</div>
+ <div class=box><b>Roadworks by ward (top 10, ward numbers shown in their own regime)</b>${d.top_wards.map(w=>`<div>${w.regime} regime, ward ${esc(w.ward)}: <span style="display:inline-block;background:#2f7bd8;height:8px;width:${w.count*4}px"></span> ${w.count}</div>`).join('')||'<p class=no>No imports yet</p>'}</div>
+ <div class=box><b>Recent imports</b>${d.imports.map(i=>`<div>${esc(i.file)}: ${i.ok} rows, ${i.at.slice(0,16)}</div>`).join('')||'<p class=no>None</p>'}</div>`}
+async function rws(p=1){V().innerHTML=`<h2>Roadwork explorer</h2><div>
+ <input id=fq placeholder="description"><input id=fid placeholder="job, WO or tender ID"><input id=fc placeholder="contractor"><input id=fw placeholder="ward no" size=6>
+ <select id=fr><option value="">any regime</option><option>198</option><option>243</option><option>225</option></select>
+ <input id=fmin placeholder="min \u20b9" size=8><input id=fmax placeholder="max \u20b9" size=8> <button onclick="rwq(1)">Search</button></div><div id=rt></div>`;rwq(1)}
+async function rwq(p){const q=new URLSearchParams({q:fq.value,id_search:fid.value,contractor:fc.value,ward:fw.value,regime:fr.value,page:p});if(fmin.value)q.set('min_amount',fmin.value);if(fmax.value)q.set('max_amount',fmax.value);
+ const d=await api('/api/gov/roadworks?'+q);rt.innerHTML=`<p>${d.total} records</p><table><tr><th>Job no</th><th>WO</th><th>Description</th><th>Ward</th><th>Contractor</th><th>Amount</th></tr>${d.items.map(w=>`<tr class=c onclick="rw(${w.id})"><td>${esc(w.job_number)}</td><td>${esc(w.work_order_id)}</td><td>${esc(w.description)}</td><td>${esc(w.ward)} <span class=tag>${w.regime}</span></td><td>${esc(w.contractor)}</td><td>${inr(w.amount)}</td></tr>`).join('')}</table>
+ ${p>1?`<button onclick="rwq(${p-1})">Prev</button>`:''} ${d.total>p*50?`<button onclick="rwq(${p+1})">Next</button>`:''}`}
+async function rw(id){const d=await api('/api/gov/roadworks/'+id),w=d.roadwork;
+ V().innerHTML=`<h2>Roadwork #${w.id}</h2>${w.is_demo?'<p class=medium>Demonstration record</p>':''}<div class=box><b>${esc(w.description)}</b>
+ <p>Job number: ${esc(w.job_number)||'<span class=no>missing</span>'} | Work order: ${esc(w.work_order_id)||'<span class=no>missing</span>'} | Tender: ${esc(w.tender_id)||'<span class=no>missing</span>'}</p>
+ <p>Ward ${esc(w.ward_number)} (${w.ward_regime} ward regime; not comparable with GBA 369 ward numbers) | Contractor: ${esc(d.contractor?.name)||'<span class=no>missing</span>'} | Amount: ${inr(w.sanctioned_amount)} | WO date: ${w.work_order_date?.slice(0,10)||'<span class=no>missing</span>'}</p>
+ <p>Source: ${esc(w.source_name)} ${w.source_url?`<a href="${esc(w.source_url)}" target=_blank style="color:#6fb1ff">original</a>`:''} ${d.source_row?`(import job ${d.source_row.import_job}, row ${d.source_row.row})`:''}</p>
+ <p>Missing fields: ${d.missing_fields.join(', ')||'none'}</p></div>
+ <div class=box><b>Lifecycle evidence</b><table>${d.lifecycle.map((s,i)=>`<tr><td>${i+1}. ${s.stage}</td><td class=${s.available?'yes':'no'}>${s.available?esc(s.evidence):'No public record imported'}</td></tr>`).join('')}</table><p class=no>Physical completion is never inferred from payments.</p></div>
+ <div class=box><b>Bills</b>${d.bills.map(b=>`<div>${esc(b.number)} ${inr(b.amount)}</div>`).join('')||'<p class=no>None</p>'}<b>Payments</b>${d.payments.map(p=>`<div>${inr(p.amount)} on ${p.paid_on?.slice(0,10)||'unknown date'}</div>`).join('')||'<p class=no>None</p>'}</div>
+ <div class=box><b>Documents</b>${d.documents.map(x=>`<div><a style="color:#6fb1ff;cursor:pointer" onclick="doc(${x.id})">${esc(x.filename)}</a> (${x.type}, ${x.pages} pages)</div>`).join('')||'<p class=no>None</p>'}</div>
+ <div class=box><b>Related clusters and record links</b>${linkTable(d.links)}</div><details><summary>Original source row</summary><pre>${esc(JSON.stringify(d.source_row?.raw,null,1))}</pre></details>`}
+const linkTable=ls=>ls.length?`<table><tr><th>From</th><th>To</th><th>Method</th><th>Confidence</th><th>Status</th><th>Evidence</th><th></th></tr>${ls.map(l=>`<tr><td>${l.a}</td><td>${l.b}</td><td>${l.method}</td><td>${l.confidence}</td><td>${l.status}</td><td><pre>${esc(JSON.stringify(l.evidence))}</pre></td><td><button onclick="lk(${l.id},'verified')">Verify</button> <button onclick="lk(${l.id},'rejected')">Reject</button></td></tr>`).join('')}</table>`:'<p class=no>No identified relationship</p>';
+async function lk(id,s){await api('/api/gov/links/'+id,{method:'PATCH',body:form({status:s})});alert('Saved')}
+async function doc(id){const r=await fetch('/api/gov/documents/'+id,{headers:{Authorization:'Bearer '+T}});const u=URL.createObjectURL(await r.blob());const ex=await api(`/api/gov/documents/${id}/extractions`);
+ V().innerHTML=`<h2>Document ${id}</h2><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><iframe src="${u}" style="width:100%;height:80vh;border:0"></iframe><div><table><tr><th>Field</th><th>Value</th><th>Page</th><th>Conf.</th><th>Status</th><th></th></tr>${ex.map(e=>`<tr><td>${e.field}</td><td>${esc(e.norm)}</td><td>${e.page}</td><td>${e.confidence}</td><td>${e.status}</td><td>${R=='admin'?`<button onclick="exr(${e.id},'verified')">OK</button> <button onclick="exc(${e.id})">Fix</button> <button onclick="exr(${e.id},'rejected')">X</button>`:''}</td></tr>`).join('')}</table></div></div>`}
+async function exr(id,s){await api('/api/admin/extractions/'+id,{method:'PATCH',body:form({status:s})});alert('Saved')}
+async function exc(id){const v=prompt('Corrected value');if(v!=null){await api('/api/admin/extractions/'+id,{method:'PATCH',body:form({status:'corrected',norm_value:v})});alert('Saved')}}
+let gm;async function gmap(){V().innerHTML='<h2>Bengaluru map</h2><p class=no>Roadwork records have no coordinates in the source data, so only citizen reports and clusters are mapped.</p><div id=gmap></div>';
+ gm=L.map('gmap').setView([12.9716,77.5946],12);L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; OpenStreetMap'}).addTo(gm);
+ const [rs,cs]=await Promise.all([api('/api/gov/reports'),api('/api/gov/clusters')]);
+ cs.forEach(c=>L.circle([c.lat,c.lon],{radius:40,color:c.status=='verified'?'#4cd38a':'#ff6b6b'}).addTo(gm).bindPopup(`Cluster ${c.id}: ${c.count} reports (${c.status})`));
+ rs.forEach(r=>L.circleMarker([r.lat,r.lon],{radius:4,color:'#6fb1ff'}).addTo(gm).bindPopup(`${r.ref} ${r.category}<br>${esc(r.description)}`))}
+async function reps(){const c=prompt('Filter by category (blank for all)')||'';const rs=await api('/api/gov/reports?category='+c);
+ V().innerHTML=`<h2>Citizen reports</h2><table><tr><th>Ref</th><th>Date</th><th>Category</th><th>Description</th><th>Road</th><th>Cluster</th><th>Status</th><th>Photo</th><th></th></tr>${rs.map(r=>`<tr><td>${r.ref}${r.demo?' <span class=tag>demo</span>':''}${r.duplicate?' <span class=tag>dup</span>':''}</td><td>${r.created_at.slice(0,10)}</td><td>${r.category}</td><td>${esc(r.description)}</td><td>${esc(r.road_name)}</td><td>${r.cluster_id??''}</td><td>${r.status}</td><td>${r.has_photo?`<button onclick="ph(${r.id})">View</button>`:''}</td><td><button onclick="st(${r.id})">Update</button> <button onclick="mv(${r.id})">Move</button></td></tr>`).join('')}</table>`}
+async function ph(id){const r=await fetch('/api/gov/photos/'+id,{headers:{Authorization:'Bearer '+T}});window.open(URL.createObjectURL(await r.blob()))}
+async function st(id){const s=prompt('Status: received, under_review, forwarded, work_started, repair_reported, closed, rejected');if(!s)return;const n=prompt('Public note (citizen sees this)')||'';const i=prompt('Internal note')||'';
+ await api(`/api/gov/reports/${id}/status`,{method:'PATCH',body:form({status:s,note_public:n,note_internal:i})});reps()}
+async function mv(id){const c=prompt('Move to cluster id (blank to remove from cluster)');if(c===null)return;await api(`/api/gov/reports/${id}/move`,{method:'POST',body:form(c?{cluster_id:c}:{})});reps()}
+async function clus(){const cs=await api('/api/gov/clusters');V().innerHTML=`<h2>Issue clusters</h2><button onclick="api('/api/gov/recluster',{method:'POST'}).then(clus)">Re-run clustering</button>${cs.map(c=>`<div class=box><b>Cluster ${c.id}</b>: ${c.category}, ${c.count} reports, ${c.first?.slice(0,10)} to ${c.last?.slice(0,10)} <span class=tag>${c.status}</span> <span class=tag>public: ${c.public_status}</span>
+ <div>Reports: ${c.reports.join(', ')}</div><details><summary>Pairwise evidence</summary><pre>${esc(JSON.stringify(c.evidence,null,1))}</pre></details>
+ <div>Suggested roadworks:</div>${linkTable(c.roadwork_links.map(l=>({...l,a:'cluster:'+c.id,b:'roadwork:'+l.roadwork_id})))}
+ <button onclick="cr(${c.id},'verified')">Verify cluster</button> <button onclick="cr(${c.id},'rejected')">Reject cluster</button></div>`).join('')||'<p class=no>No clusters</p>'}`}
+async function cr(id,d){const ps=d=='verified'?(prompt('Public status (e.g. under_review, forwarded)')||''):'';await api(`/api/gov/clusters/${id}/review`,{method:'POST',body:form({decision:d,public_status:ps})});clus()}
+async function alerts(){const as=await api('/api/gov/alerts');V().innerHTML=`<h2>Alerts</h2><p class=no>Alerts show patterns in reports and records. They are not findings of negligence or misconduct.</p>${as.map(a=>`<div class=box><b class=${a.severity}>${a.severity.toUpperCase()}</b> ${esc(a.title)} <span class=tag>${a.rule}</span><p>${esc(a.explanation)}</p><pre>${esc(JSON.stringify(a.evidence))}</pre>
+ ${a.cluster_id?`Cluster ${a.cluster_id} `:''}${a.roadwork_id?`<a style="color:#6fb1ff;cursor:pointer" onclick="rw(${a.roadwork_id})">Roadwork ${a.roadwork_id}</a> `:''}
+ <button onclick="al(${a.id},'acknowledged')">Acknowledge</button> <button onclick="al(${a.id},'dismissed')">Dismiss</button> <button onclick="al(${a.id},'resolved')">Resolve</button></div>`).join('')||'<p class=no>No open alerts</p>'}`}
+async function al(id,s){await api('/api/gov/alerts/'+id,{method:'PATCH',body:form({status:s})});alerts()}
+async function links(){const ls=await api('/api/gov/links?status=suggested');V().innerHTML=`<h2>Record matching review</h2>${R=='admin'?'<button onclick="api(\'/api/admin/match\',{method:\'POST\'}).then(links)">Run tender matching</button>':''}${linkTable(ls)}`}
+async function imports(){const js=await api('/api/admin/imports');V().innerHTML=`<h2>Data import</h2><div class=box><input type=file id=imf accept=".csv,.xlsx,.xls"> <input id=ims placeholder="Source name" value="OpenCity: BBMP Work Orders and Payments">
+ <input id=imu placeholder="Source URL" size=40> <select id=imr><option>225</option><option>243</option><option>198</option><option>common</option></select>
+ <label><input type=checkbox id=imo checked> Road works only</label><br><textarea id=imm placeholder='Optional explicit column map JSON, e.g. {"description":"Name of Work"}' style="width:100%"></textarea><button onclick="doimp()">Import</button><pre id=imres></pre></div>
+ <div class=box><b>Manual tender entry (from KPPP)</b><br><input id=tid placeholder="Tender ID"><input id=tti placeholder="Title" size=40><input id=tav placeholder="Awarded value"><input id=turl placeholder="KPPP URL"><button onclick="addt()">Add</button></div>
+ <table><tr><th>ID</th><th>File</th><th>Source</th><th>Regime</th><th>Status</th><th>Total</th><th>OK</th><th>Skipped</th><th>Failed</th></tr>${js.map(j=>`<tr><td>${j.id}</td><td>${esc(j.file)}</td><td>${esc(j.source)}</td><td>${j.regime}</td><td>${j.status}</td><td>${j.total}</td><td>${j.ok}</td><td>${j.skipped}</td><td>${j.failed}</td></tr>`).join('')}</table>`}
+async function doimp(){const f=imf.files[0];if(!f)return;const r=await api('/api/admin/import',{method:'POST',body:form({file:f,source_name:ims.value,source_url:imu.value,ward_regime:imr.value,mapping_json:imm.value,roads_only:imo.checked})});imres.textContent=JSON.stringify(r,null,1)}
+async function addt(){await api('/api/admin/tenders',{method:'POST',body:form({tender_id:tid.value,title:tti.value,awarded_value:tav.value||null,url:turl.value})});alert('Added')}
+async function docs(){V().innerHTML=`<h2>Document upload and extraction</h2><div class=box><input type=file id=df accept=".pdf"> <input id=drw placeholder="Roadwork id"> <select id=dt><option>tender</option><option>boq</option><option>award</option><option>work_order</option><option>bill</option><option>completion</option><option>other</option></select> <button onclick="updoc()">Upload and extract</button><pre id=dres></pre></div>`}
+async function updoc(){const r=await api('/api/admin/documents',{method:'POST',body:form({file:df.files[0],roadwork_id:drw.value||null,doc_type:dt.value})});dres.textContent=JSON.stringify(r);doc(r.document_id)}
+async function users(){const us=await api('/api/admin/users');V().innerHTML=`<h2>Users</h2><table>${us.map(u=>`<tr><td>${u.email}</td><td>${u.role}</td><td>${u.active}</td></tr>`).join('')}</table><div class=box><input id=ue placeholder=email><input id=up placeholder=password><select id=ur><option>officer</option><option>admin</option></select><button onclick="api('/api/admin/users',{method:'POST',body:form({email:ue.value,password:up.value,role:ur.value})}).then(users)">Create</button></div>`}
+async function auditv(){const a=await api('/api/admin/audit');V().innerHTML=`<h2>Audit log</h2><table><tr><th>When</th><th>User</th><th>Action</th><th>Entity</th><th>Detail</th></tr>${a.map(x=>`<tr><td>${x.at.slice(0,19)}</td><td>${x.user}</td><td>${x.action}</td><td>${x.entity} ${x.entity_id}</td><td>${esc(JSON.stringify(x.detail))}</td></tr>`).join('')}</table>`}
+boot();
+</script></body></html>

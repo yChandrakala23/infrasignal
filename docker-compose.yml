@@ -1,0 +1,17 @@
+services:
+  db:
+    image: postgis/postgis:16-3.4
+    environment:
+      POSTGRES_USER: infra
+      POSTGRES_PASSWORD: infra
+      POSTGRES_DB: infrasignal
+    ports: ["5432:5432"]
+    volumes: [pgdata:/var/lib/postgresql/data]
+  api:
+    build: ./backend
+    env_file: .env
+    depends_on: [db]
+    ports: ["8000:8000"]
+    volumes: ["./backend/uploads:/app/uploads"]
+volumes:
+  pgdata:

@@ -1,0 +1,70 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>InfraSignal: Report a road problem</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+body{margin:0;font:16px/1.5 system-ui,sans-serif;background:#f6f7f4;color:#1d2a22}
+header{background:#1f6f4a;color:#fff;padding:14px 16px}header b{font-size:20px}
+nav{display:flex;background:#fff;border-bottom:1px solid #ddd;position:sticky;top:0;z-index:999}
+nav button{flex:1;padding:12px;border:0;background:none;font-size:15px}nav button.on{border-bottom:3px solid #1f6f4a;font-weight:600}
+main{max-width:640px;margin:auto;padding:16px}section{display:none}section.on{display:block}
+label{display:block;margin:12px 0 4px;font-weight:600}select,textarea,input{width:100%;padding:10px;font-size:16px;box-sizing:border-box;border:1px solid #bbb;border-radius:8px}
+.btn{background:#1f6f4a;color:#fff;border:0;padding:14px;border-radius:10px;width:100%;font-size:17px;margin-top:14px}
+.map{height:300px;border-radius:10px;margin-top:8px}.big{height:70vh}.card{background:#fff;padding:14px;border-radius:10px;margin:10px 0}
+.muted{color:#5b6b60;font-size:14px}.ok{background:#e3f4ea;border:1px solid #1f6f4a}
+</style></head><body>
+<header><b>InfraSignal</b><div class="muted" style="color:#d6efe0">Bengaluru road problem reporting (student prototype, not an official government service)</div></header>
+<nav><button data-t="home" class="on">Home</button><button data-t="report">Report</button><button data-t="track">Track</button><button data-t="map">Map</button></nav>
+<main>
+<section id="home" class="on"><div class="card"><h2>Seen a pothole or broken road?</h2>
+<p>Report potholes, damaged roads, cracks, waterlogging damage, incomplete roadworks or recurring damage. Reports near each other are grouped so officers see one issue instead of many separate complaints.</p>
+<button class="btn" onclick="show('report')">Report an issue</button></div>
+<div class="card muted">Your contact details are optional and never shown publicly. Photos are visible only to monitoring officers, and location metadata is removed from them.</div></section>
+
+<section id="report"><form id="f">
+<label>What is the problem?</label><select name="category" required>
+<option value="pothole">Pothole</option><option value="damaged_road">Damaged road</option><option value="cracks">Road cracks</option>
+<option value="waterlogging">Waterlogging damage</option><option value="incomplete_work">Incomplete roadwork</option>
+<option value="recurring">Recurring damage</option><option value="other">Other road problem</option></select>
+<label>Location</label><button type="button" class="btn" style="background:#2d5d8a" onclick="gps()">Use my current location</button>
+<div class="muted" id="locmsg">Or tap the map to place a pin.</div><div id="pick" class="map"></div>
+<label>Road or landmark (optional)</label><input name="road_name" placeholder="Example: 80 Feet Road near bus stop">
+<label>Description</label><textarea name="description" rows="3" maxlength="1000"></textarea>
+<label>Photo (optional)</label><input type="file" name="photo" accept="image/*" capture="environment">
+<label>Contact (optional, private)</label><input name="contact" placeholder="Phone or email">
+<button class="btn">Submit report</button></form><div id="done"></div></section>
+
+<section id="track"><div class="card"><label>Report reference</label><input id="ref"><label>Tracking code</label><input id="tok">
+<button class="btn" onclick="track()">Check status</button></div><div id="tr"></div></section>
+
+<section id="map"><div class="muted">Grouped issues (circles) and single reports (dots). Demo reports are labelled.</div><div id="pub" class="map big"></div></section>
+</main>
+<script>
+const B=[12.9716,77.5946];let pick,pin,lat,lon,acc,pub;
+function show(t){document.querySelectorAll('section').forEach(s=>s.classList.toggle('on',s.id==t));document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.t==t));
+ if(t=='report'&&!pick){pick=L.map('pick').setView(B,12);tiles(pick);pick.on('click',e=>setPin(e.latlng.lat,e.latlng.lng,null))}
+ if(t=='map')loadMap();setTimeout(()=>{pick&&pick.invalidateSize();pub&&pub.invalidateSize()},50)}
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>show(b.dataset.t));
+function tiles(m){L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; OpenStreetMap contributors'}).addTo(m)}
+function setPin(a,b,c){lat=a;lon=b;acc=c;pin?pin.setLatLng([a,b]):pin=L.marker([a,b]).addTo(pick);pick.setView([a,b],16);
+ document.getElementById('locmsg').textContent=`Pinned at ${a.toFixed(5)}, ${b.toFixed(5)}`+(c?` (GPS accuracy about ${Math.round(c)} m)`:'')}
+function gps(){if(!navigator.geolocation)return alert('GPS not available. Tap the map instead.');
+ navigator.geolocation.getCurrentPosition(p=>setPin(p.coords.latitude,p.coords.longitude,p.coords.accuracy),()=>alert('Could not get GPS. Tap the map instead.'),{enableHighAccuracy:true,timeout:10000})}
+document.getElementById('f').onsubmit=async e=>{e.preventDefault();if(lat==null)return alert('Please choose a location.');
+ const fd=new FormData(e.target);fd.append('lat',lat);fd.append('lon',lon);if(acc)fd.append('accuracy_m',acc);
+ const r=await fetch('/api/reports',{method:'POST',body:fd});const j=await r.json();
+ if(!r.ok)return alert(j.detail||'Could not submit');e.target.reset();
+ document.getElementById('done').innerHTML=`<div class="card ok"><b>Report submitted.</b><p>Reference: <b>${j.ref}</b><br>Tracking code: <b>${j.token}</b></p><p class="muted">Save both now. The tracking code is shown only once.${j.duplicate?' This looks like a repeat of a report you just sent.':''}</p></div>`;
+ localStorage.setItem('is_last',JSON.stringify({ref:j.ref,token:j.token}))}
+async function track(){const r=await fetch(`/api/reports/track?ref=${encodeURIComponent(ref.value)}&token=${encodeURIComponent(tok.value)}`);const j=await r.json();
+ if(!r.ok)return tr.innerHTML=`<div class="card">${j.detail}</div>`;
+ tr.innerHTML=`<div class="card"><b>${j.ref}</b>: ${j.category}<br>Status: <b>${j.status}</b>
+ <p>${j.cluster?`Grouped with ${j.cluster.report_count} nearby reports (issue #${j.cluster.id}).`:'Not grouped with other reports yet.'}</p>
+ <p>${j.related_roadworks.length?'Related roadwork (verified by an officer): '+j.related_roadworks.map(x=>x.description).join('; '):'No verified related roadwork yet.'}</p>
+ <ul>${j.history.map(h=>`<li>${new Date(h.at+'Z').toLocaleString()}: ${h.status}${h.note?' ('+h.note+')':''}</li>`).join('')}</ul></div>`}
+try{const s=JSON.parse(localStorage.getItem('is_last'));if(s){ref.value=s.ref;tok.value=s.token}}catch(e){}
+async function loadMap(){if(!pub){pub=L.map('pub').setView(B,12);tiles(pub)}const j=await (await fetch('/api/public/map')).json();
+ j.clusters.forEach(c=>L.circle([c.lat,c.lon],{radius:30+c.count*10,color:'#c0392b'}).addTo(pub).bindPopup(`<b>${c.category}</b><br>${c.count} reports<br>Status: ${c.status}<br>First: ${c.first?.slice(0,10)} Latest: ${c.last?.slice(0,10)}`));
+ j.reports.forEach(r=>L.circleMarker([r.lat,r.lon],{radius:5,color:'#2d5d8a'}).addTo(pub).bindPopup(`${r.category}<br>${r.date}${r.demo?'<br><i>Demonstration data</i>':''}`))}
+</script></body></html>
