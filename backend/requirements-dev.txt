@@ -1,0 +1,4 @@
+-r requirements.txt
+pytest>=8
+httpx>=0.27            # FastAPI TestClient
+reportlab>=4           # scripts/build_sample_data.py, build_heldout_docs.py make the synthetic PDFs

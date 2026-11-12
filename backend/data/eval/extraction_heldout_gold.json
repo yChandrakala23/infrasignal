@@ -1,0 +1,64 @@
+{
+ "note": "Narrative-style SYNTHETIC documents, written after the extractor was tuned and not used to tune it.",
+ "documents": {
+  "H01_work_order_letter.pdf": {
+   "doc_type": "work_order",
+   "fields": {
+    "work_order_id": "SAMPLE/WO/HX/101",
+    "work_order_date": "2025-08-14",
+    "tender_id": "SAMPLE/KPPP/2526/H01",
+    "job_number": "SAMPLE/J/2526/H01",
+    "contractor": "Demo Highways Pvt Ltd",
+    "awarded_amount": "8450000",
+    "ward": "12",
+    "commencement_date": "2025-08-25",
+    "completion_deadline": "2025-12-11"
+   }
+  },
+  "H02_tender_notice_prose.pdf": {
+   "doc_type": "nit",
+   "fields": {
+    "tender_id": "SAMPLE/KPPP/2526/H02",
+    "job_number": "SAMPLE/J/2526/H02",
+    "estimated_cost": "12500000",
+    "ward": "4"
+   }
+  },
+  "H03_payment_release_prose.pdf": {
+   "doc_type": "payment_record",
+   "fields": {
+    "payment_amount": "1875000",
+    "payment_date": "2025-09-19",
+    "contractor": "Demo Roadways (India) Pvt Ltd",
+    "work_order_id": "SAMPLE/WO/HX/103",
+    "job_number": "SAMPLE/J/2526/H03"
+   }
+  },
+  "H04_completion_certificate_prose.pdf": {
+   "doc_type": "completion_certificate",
+   "fields": {
+    "work_order_id": "SAMPLE/WO/HX/104",
+    "job_number": "SAMPLE/J/2526/H04",
+    "contractor": "Sample Restoration Works",
+    "document_date": "2025-10-28"
+   }
+  },
+  "H05_acceptance_letter_prose.pdf": {
+   "doc_type": "loa",
+   "fields": {
+    "tender_id": "SAMPLE/KPPP/2526/H05",
+    "contractor": "Placeholder Civil Engineers",
+    "awarded_amount": "21000000",
+    "document_date": "2025-07-02"
+   }
+  },
+  "H06_admin_approval_prose.pdf": {
+   "doc_type": "admin_approval",
+   "fields": {
+    "estimated_cost": "24000000",
+    "ward": "150",
+    "document_date": "2025-05-21"
+   }
+  }
+ }
+}

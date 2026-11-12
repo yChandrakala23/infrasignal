@@ -1,0 +1,561 @@
+{
+ "caveat": "All documents, records and complaints used here are synthetic and were written by the developers. Scores show that the pipeline works on these examples. They are not an estimate of accuracy on real BBMP, KPPP or citizen data.",
+ "extraction": {
+  "sets": [
+   {
+    "key": "sample_pack",
+    "title": "Table-style sample pack (extractor tuned on this)",
+    "independent": false,
+    "documents": 19,
+    "correct": 116,
+    "total": 116,
+    "accuracy": 1.0
+   },
+   {
+    "key": "narrative_1",
+    "title": "Narrative set 1 (gaps fixed afterwards; not independent)",
+    "independent": false,
+    "documents": 6,
+    "correct": 28,
+    "total": 29,
+    "accuracy": 0.9655172413793104
+   },
+   {
+    "key": "narrative_2",
+    "title": "Narrative set 2 (never used for tuning)",
+    "independent": true,
+    "documents": 6,
+    "correct": 19,
+    "total": 29,
+    "accuracy": 0.6551724137931034
+   }
+  ],
+  "by_field": [
+   {
+    "field": "work_id",
+    "correct": 1,
+    "total": 2,
+    "accuracy": 0.5
+   },
+   {
+    "field": "commencement_date",
+    "correct": 4,
+    "total": 5,
+    "accuracy": 0.8
+   },
+   {
+    "field": "work_order_date",
+    "correct": 5,
+    "total": 6,
+    "accuracy": 0.8333333333333334
+   },
+   {
+    "field": "completion_deadline",
+    "correct": 5,
+    "total": 6,
+    "accuracy": 0.8333333333333334
+   },
+   {
+    "field": "work_order_id",
+    "correct": 11,
+    "total": 13,
+    "accuracy": 0.8461538461538461
+   },
+   {
+    "field": "ward",
+    "correct": 14,
+    "total": 16,
+    "accuracy": 0.875
+   },
+   {
+    "field": "contractor",
+    "correct": 14,
+    "total": 16,
+    "accuracy": 0.875
+   },
+   {
+    "field": "awarded_amount",
+    "correct": 10,
+    "total": 11,
+    "accuracy": 0.9090909090909091
+   },
+   {
+    "field": "tender_id",
+    "correct": 14,
+    "total": 14,
+    "accuracy": 1.0
+   },
+   {
+    "field": "job_number",
+    "correct": 23,
+    "total": 23,
+    "accuracy": 1.0
+   },
+   {
+    "field": "work_description",
+    "correct": 18,
+    "total": 18,
+    "accuracy": 1.0
+   },
+   {
+    "field": "department",
+    "correct": 7,
+    "total": 7,
+    "accuracy": 1.0
+   },
+   {
+    "field": "estimated_cost",
+    "correct": 9,
+    "total": 9,
+    "accuracy": 1.0
+   },
+   {
+    "field": "document_date",
+    "correct": 16,
+    "total": 16,
+    "accuracy": 1.0
+   },
+   {
+    "field": "payment_amount",
+    "correct": 6,
+    "total": 6,
+    "accuracy": 1.0
+   },
+   {
+    "field": "payment_date",
+    "correct": 5,
+    "total": 5,
+    "accuracy": 1.0
+   },
+   {
+    "field": "location",
+    "correct": 1,
+    "total": 1,
+    "accuracy": 1.0
+   }
+  ],
+  "type_accuracy": 0.967741935483871,
+  "documents": 31,
+  "misses": [
+   {
+    "set": "narrative_1",
+    "doc": "H01_work_order_letter.pdf",
+    "field": "work_order_id",
+    "expected": "SAMPLE/WO/HX/101",
+    "got": []
+   },
+   {
+    "set": "narrative_2",
+    "doc": "J01_work_order_memo.pdf",
+    "field": "document_type",
+    "expected": "work_order",
+    "got": "other"
+   },
+   {
+    "set": "narrative_2",
+    "doc": "J01_work_order_memo.pdf",
+    "field": "work_order_id",
+    "expected": "SAMPLE/WO/J/201",
+    "got": []
+   },
+   {
+    "set": "narrative_2",
+    "doc": "J01_work_order_memo.pdf",
+    "field": "work_order_date",
+    "expected": "2025-03-07",
+    "got": []
+   },
+   {
+    "set": "narrative_2",
+    "doc": "J01_work_order_memo.pdf",
+    "field": "commencement_date",
+    "expected": "2025-03-17",
+    "got": []
+   },
+   {
+    "set": "narrative_2",
+    "doc": "J01_work_order_memo.pdf",
+    "field": "completion_deadline",
+    "expected": "2025-06-16",
+    "got": []
+   },
+   {
+    "set": "narrative_2",
+    "doc": "J01_work_order_memo.pdf",
+    "field": "ward",
+    "expected": "174",
+    "got": []
+   },
+   {
+    "set": "narrative_2",
+    "doc": "J02_payment_utr.pdf",
+    "field": "contractor",
+    "expected": "Demo Drainage and Roads Pvt. Ltd.",
+    "got": [
+     "Demo Drainage"
+    ]
+   },
+   {
+    "set": "narrative_2",
+    "doc": "J03_tender_notice_short.pdf",
+    "field": "ward",
+    "expected": "9",
+    "got": []
+   },
+   {
+    "set": "narrative_2",
+    "doc": "J06_agreement_prose.pdf",
+    "field": "work_id",
+    "expected": "SAMPLE/AGR/J/206",
+    "got": []
+   },
+   {
+    "set": "narrative_2",
+    "doc": "J06_agreement_prose.pdf",
+    "field": "contractor",
+    "expected": "Demo Civil Contractors",
+    "got": [
+     "Demo Civil Contractors (second party)"
+    ]
+   },
+   {
+    "set": "narrative_2",
+    "doc": "J06_agreement_prose.pdf",
+    "field": "awarded_amount",
+    "expected": "11200000",
+    "got": []
+   }
+  ],
+  "accuracy": 0.9367816091954023,
+  "correct": 163,
+  "total": 174
+ },
+ "matching": {
+  "document_to_work": {
+   "tp": 15,
+   "fp": 0,
+   "fn": 2,
+   "precision": 1.0,
+   "recall": 0.8823529411764706,
+   "f1": 0.9375,
+   "suggested_hits": "2/2",
+   "fuzzy_only_auto_links": 0,
+   "rows": [
+    {
+     "doc": "A01_nit_hosur_road.pdf",
+     "expected": "SAMPLE/J/2425/001",
+     "auto_linked_to": "SAMPLE/J/2425/001",
+     "status": "auto"
+    },
+    {
+     "doc": "A02_boq_hosur_road.pdf",
+     "expected": "SAMPLE/J/2425/001",
+     "auto_linked_to": "SAMPLE/J/2425/001",
+     "status": "auto"
+    },
+    {
+     "doc": "A03_admin_approval_hosur_road.pdf",
+     "expected": "SAMPLE/J/2425/001",
+     "auto_linked_to": "SAMPLE/J/2425/001",
+     "status": "auto"
+    },
+    {
+     "doc": "A04_technical_sanction_hosur_road.pdf",
+     "expected": "SAMPLE/J/2425/001",
+     "auto_linked_to": "SAMPLE/J/2425/001",
+     "status": "auto"
+    },
+    {
+     "doc": "A05_loa_hosur_road.pdf",
+     "expected": "SAMPLE/J/2425/001",
+     "auto_linked_to": "SAMPLE/J/2425/001",
+     "status": "auto"
+    },
+    {
+     "doc": "A06_work_order_hosur_road.pdf",
+     "expected": "SAMPLE/J/2425/001",
+     "auto_linked_to": "SAMPLE/J/2425/001",
+     "status": "auto"
+    },
+    {
+     "doc": "A07_agreement_hosur_road.pdf",
+     "expected": "SAMPLE/J/2425/001",
+     "auto_linked_to": "SAMPLE/J/2425/001",
+     "status": "auto"
+    },
+    {
+     "doc": "A08_running_bill_hosur_road.pdf",
+     "expected": "SAMPLE/J/2425/001",
+     "auto_linked_to": "SAMPLE/J/2425/001",
+     "status": "auto"
+    },
+    {
+     "doc": "A09_payment_hosur_road.pdf",
+     "expected": "SAMPLE/J/2425/001",
+     "auto_linked_to": "SAMPLE/J/2425/001",
+     "status": "auto"
+    },
+    {
+     "doc": "A10_completion_hosur_road.pdf",
+     "expected": "SAMPLE/J/2425/001",
+     "auto_linked_to": "SAMPLE/J/2425/001",
+     "status": "auto"
+    },
+    {
+     "doc": "B01_nit_orr.pdf",
+     "expected": "SAMPLE/J/2425/002",
+     "auto_linked_to": "SAMPLE/J/2425/002",
+     "status": "auto"
+    },
+    {
+     "doc": "B02_work_order_orr.pdf",
+     "expected": "SAMPLE/J/2425/002",
+     "auto_linked_to": "SAMPLE/J/2425/002",
+     "status": "auto"
+    },
+    {
+     "doc": "B03_payment_orr.pdf",
+     "expected": "SAMPLE/J/2425/002",
+     "auto_linked_to": "SAMPLE/J/2425/002",
+     "status": "auto"
+    },
+    {
+     "doc": "C01_work_order_mg_road_SCANNED.pdf",
+     "expected": "SAMPLE/J/2425/003",
+     "auto_linked_to": "SAMPLE/J/2425/003",
+     "status": "auto"
+    },
+    {
+     "doc": "C02_payment_mg_road.pdf",
+     "expected": "SAMPLE/J/2425/003",
+     "auto_linked_to": "SAMPLE/J/2425/003",
+     "status": "auto"
+    },
+    {
+     "doc": "D01_loa_conflict.pdf",
+     "expected": "SAMPLE/J/2526/004",
+     "auto_linked_to": null,
+     "status": "needs_review"
+    },
+    {
+     "doc": "X01_nit_orphan_hennur.pdf",
+     "expected": null,
+     "auto_linked_to": null,
+     "status": "unmatched"
+    },
+    {
+     "doc": "F01_work_order_no_ids.pdf",
+     "expected": "SAMPLE/J/2526/006",
+     "auto_linked_to": null,
+     "status": "needs_review"
+    },
+    {
+     "doc": "Z01_meeting_minutes_other.pdf",
+     "expected": null,
+     "auto_linked_to": null,
+     "status": "unmatched"
+    }
+   ]
+  },
+  "tender_to_work": {
+   "tp": 13,
+   "fp": 0,
+   "fn": 4,
+   "precision": 1.0,
+   "recall": 0.7647058823529411,
+   "f1": 0.8666666666666666
+  },
+  "work_to_road": {
+   "tp": 15,
+   "fp": 0,
+   "fn": 5,
+   "precision": 1.0,
+   "recall": 0.75,
+   "f1": 0.8571428571428571
+  }
+ },
+ "clustering": {
+  "n": 85,
+  "groups": 15,
+  "ari": 1.0,
+  "pairwise": {
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0
+  },
+  "ablation": [
+   {
+    "name": "Distance only (plain DBSCAN, 40 m)",
+    "ari": 0.9170575434266877,
+    "precision": 0.8512396694214877,
+    "recall": 1.0,
+    "f1": 0.9196428571428572,
+    "clusters": 16
+   },
+   {
+    "name": "+ category rule",
+    "ari": 0.9950248478885566,
+    "precision": 0.9903846153846154,
+    "recall": 1.0,
+    "f1": 0.9951690821256038,
+    "clusters": 16
+   },
+   {
+    "name": "+ category + text similarity",
+    "ari": 0.9950248478885566,
+    "precision": 0.9903846153846154,
+    "recall": 1.0,
+    "f1": 0.9951690821256038,
+    "clusters": 16
+   },
+   {
+    "name": "+ category + text + time gap (full)",
+    "ari": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "clusters": 15
+   }
+  ],
+  "sweep": [
+   {
+    "eps_m": 15,
+    "ari": 0.8253658186609096,
+    "precision": 1.0,
+    "recall": 0.7087378640776699,
+    "f1": 0.8295454545454545,
+    "clusters": 15
+   },
+   {
+    "eps_m": 25,
+    "ari": 0.989907756327441,
+    "precision": 1.0,
+    "recall": 0.9805825242718447,
+    "f1": 0.9901960784313726,
+    "clusters": 15
+   },
+   {
+    "eps_m": 40,
+    "ari": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "clusters": 15
+   },
+   {
+    "eps_m": 60,
+    "ari": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "clusters": 15
+   },
+   {
+    "eps_m": 90,
+    "ari": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "clusters": 15
+   },
+   {
+    "eps_m": 150,
+    "ari": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "clusters": 15
+   }
+  ],
+  "gps_noise": [
+   {
+    "gps_noise_m": 0,
+    "ari": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "clusters": 15
+   },
+   {
+    "gps_noise_m": 10,
+    "ari": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "clusters": 15
+   },
+   {
+    "gps_noise_m": 20,
+    "ari": 0.883507003253786,
+    "precision": 1.0,
+    "recall": 0.7961165048543689,
+    "f1": 0.8864864864864864,
+    "clusters": 14
+   },
+   {
+    "gps_noise_m": 35,
+    "ari": 0.42033158548783073,
+    "precision": 1.0,
+    "recall": 0.27184466019417475,
+    "f1": 0.4274809160305344,
+    "clusters": 14
+   }
+  ]
+ },
+ "alerts": {
+  "by_rule": [
+   {
+    "rule": "long_running",
+    "alerts": 1,
+    "on_true_group": 1,
+    "false_positive": 0,
+    "precision": 1.0
+   },
+   {
+    "rule": "multiple_reports",
+    "alerts": 14,
+    "on_true_group": 14,
+    "false_positive": 0,
+    "precision": 1.0
+   },
+   {
+    "rule": "repeat_days",
+    "alerts": 9,
+    "on_true_group": 9,
+    "false_positive": 0,
+    "precision": 1.0
+   },
+   {
+    "rule": "surge",
+    "alerts": 1,
+    "on_true_group": 1,
+    "false_positive": 0,
+    "precision": 1.0
+   },
+   {
+    "rule": "unmatched_recurring",
+    "alerts": 14,
+    "on_true_group": 14,
+    "false_positive": 0,
+    "precision": 1.0
+   }
+  ],
+  "missed_groups": [],
+  "groups_expected": 14,
+  "false_alarm_groups": [
+   "D1"
+  ],
+  "note": "An alert counts as a false positive when the reports behind it do not belong to a labelled group that should raise an alert (isolated reports, or the 2-report pair 'D1'). Several rules can fire for the same real group, so alert counts exceed group counts."
+ },
+ "limitations": [
+  "Extraction: the first sample pack uses 'Label: value' tables and the extractor was tuned on it, so its 100% is not independent. Narrative set 1 was used to find and fix gaps (its post-fix score is not independent either). Only narrative set 2 was never used for tuning.",
+  "Real scanned documents (skewed, stamped, handwritten, Kannada text) were not available. OCR was tested on one clean synthetic scan. Kannada OCR is not enabled.",
+  "The optional LLM extraction pass and the optional multilingual sentence-embedding similarity were implemented but not run against live services here. All numbers above use the rule-based and TF-IDF paths.",
+  "Matching: a link is only automatic on an exact identifier. Name, road and description similarity only suggests. The recall figures therefore deliberately exclude fuzzy-only cases, which are reported as 'suggested hits'.",
+  "Clustering labels were assigned by the author when generating the complaints, so the clusters are cleaner than real life. The GPS-noise stress test shows how quickly scores fall once the data gets less tidy.",
+  "Road geometry is a small hand-placed approximation (22 roads), not a surveyed centreline. Work-to-road linking is by road name and ward because roadwork records carry no coordinates.",
+  "Alert analysis runs without road data, so segment-based rules (road hotspot) are not exercised."
+ ],
+ "generated_at": "2026-11-12T09:48:08.262856",
+ "seconds": 5.3
+}

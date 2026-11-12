@@ -1,0 +1,699 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Outer Ring Road (Hebbal to Silk Board section)",
+    "road_class": "primary",
+    "source": "SAMPLE_APPROX",
+    "is_approx": true,
+    "note": "Hand-placed approximate geometry for demonstration. Not survey or official data."
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      77.597,
+      13.0358
+     ],
+     [
+      77.615,
+      13.043
+     ],
+     [
+      77.633,
+      13.042
+     ],
+     [
+      77.645,
+      13.028
+     ],
+     [
+      77.656,
+      13.015
+     ],
+     [
+      77.67,
+      13.0067
+     ],
+     [
+      77.697,
+      12.991
+     ],
+     [
+      77.7011,
+      12.9569
+     ],
+     [
+      77.6762,
+      12.926
+     ],
+     [
+      77.6495,
+      12.9217
+     ],
+     [
+      77.6233,
+      12.9176
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Hosur Road",
+    "road_class": "primary",
+    "source": "SAMPLE_APPROX",
+    "is_approx": true,
+    "note": "Hand-placed approximate geometry for demonstration. Not survey or official data."
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      77.603,
+      12.94
+     ],
+     [
+      77.613,
+      12.93
+     ],
+     [
+      77.6233,
+      12.9176
+     ],
+     [
+      77.629,
+      12.906
+     ],
+     [
+      77.637,
+      12.893
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Bannerghatta Road",
+    "road_class": "primary",
+    "source": "SAMPLE_APPROX",
+    "is_approx": true,
+    "note": "Hand-placed approximate geometry for demonstration. Not survey or official data."
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      77.6,
+      12.94
+     ],
+     [
+      77.6,
+      12.93
+     ],
+     [
+      77.5995,
+      12.9179
+     ],
+     [
+      77.599,
+      12.905
+     ],
+     [
+      77.597,
+      12.889
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Old Madras Road",
+    "road_class": "primary",
+    "source": "SAMPLE_APPROX",
+    "is_approx": true,
+    "note": "Hand-placed approximate geometry for demonstration. Not survey or official data."
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      77.62,
+      12.973
+     ],
+     [
+      77.6408,
+      12.9784
+     ],
+     [
+      77.66,
+      12.989
+     ],
+     [
+      77.673,
+      13.0
+     ],
+     [
+      77.677,
+      13.0067
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Bellary Road",
+    "road_class": "primary",
+    "source": "SAMPLE_APPROX",
+    "is_approx": true,
+    "note": "Hand-placed approximate geometry for demonstration. Not survey or official data."
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      77.5806,
+      13.0143
+     ],
+     [
+      77.59,
+      13.025
+     ],
+     [
+      77.597,
+      13.0358
+     ],
+     [
+      77.599,
+      13.055
+     ],
+     [
+      77.596,
+      13.08
+     ],
+     [
+      77.5963,
+      13.1007
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Tumkur Road",
+    "road_class": "primary",
+    "source": "SAMPLE_APPROX",
+    "is_approx": true,
+    "note": "Hand-placed approximate geometry for demonstration. Not survey or official data."
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      77.542,
+      13.029
+     ],
+     [
+      77.526,
+      13.034
+     ],
+     [
+      77.51,
+      13.04
+     ],
+     [
+      77.49,
+      13.049
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Mysore Road",
+    "road_class": "primary",
+    "source": "SAMPLE_APPROX",
+    "is_approx": true,
+    "note": "Hand-placed approximate geometry for demonstration. Not survey or official data."
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      77.575,
+      12.965
+     ],
+     [
+      77.556,
+      12.956
+     ],
+     [
+      77.53,
+      12.942
+     ],
+     [
+      77.51,
+      12.93
+     ],
+     [
+      77.483,
+      12.915
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Kanakapura Road",
+    "road_class": "primary",
+    "source": "SAMPLE_APPROX",
+    "is_approx": true,
+    "note": "Hand-placed approximate geometry for demonstration. Not survey or official data."
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      77.575,
+      12.9381
+     ],
+     [
+      77.57,
+      12.915
+     ],
+     [
+      77.564,
+      12.892
+     ],
+     [
+      77.558,
+      12.87
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Sarjapur Road",
+    "road_class": "secondary",
+    "source": "SAMPLE_APPROX",
+    "is_approx": true,
+    "note": "Hand-placed approximate geometry for demonstration. Not survey or official data."
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      77.634,
+      12.923
+     ],
+     [
+      77.654,
+      12.914
+     ],
+     [
+      77.674,
+      12.905
+     ],
+     [
+      77.69,
+      12.895
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Magadi Road",
+    "road_class": "secondary",
+    "source": "SAMPLE_APPROX",
+    "is_approx": true,
+    "note": "Hand-placed approximate geometry for demonstration. Not survey or official data."
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      77.56,
+      12.977
+     ],
+     [
+      77.545,
+      12.98
+     ],
+     [
+      77.53,
+      12.985
+     ],
+     [
+      77.515,
+      12.989
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Whitefield Main Road",
+    "road_class": "secondary",
+    "source": "SAMPLE_APPROX",
+    "is_approx": true,
+    "note": "Hand-placed approximate geometry for demonstration. Not survey or official data."
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      77.698,
+      12.991
+     ],
+     [
+      77.715,
+      12.988
+     ],
+     [
+      77.73,
+      12.986
+     ],
+     [
+      77.736,
+      12.9855
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "MG Road",
+    "road_class": "secondary",
+    "source": "SAMPLE_APPROX",
+    "is_approx": true,
+    "note": "Hand-placed approximate geometry for demonstration. Not survey or official data."
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      77.601,
+      12.9759
+     ],
+     [
+      77.6068,
+      12.9755
+     ],
+     [
+      77.613,
+      12.974
+     ],
+     [
+      77.62,
+      12.973
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Brigade Road",
+    "road_class": "tertiary",
+    "source": "SAMPLE_APPROX",
+    "is_approx": true,
+    "note": "Hand-placed approximate geometry for demonstration. Not survey or official data."
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      77.6072,
+      12.9733
+     ],
+     [
+      77.6068,
+      12.9695
+     ],
+     [
+      77.6063,
+      12.9655
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Residency Road",
+    "road_class": "tertiary",
+    "source": "SAMPLE_APPROX",
+    "is_approx": true,
+    "note": "Hand-placed approximate geometry for demonstration. Not survey or official data."
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      77.6047,
+      12.9709
+     ],
+     [
+      77.6,
+      12.968
+     ],
+     [
+      77.5985,
+      12.9654
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Cunningham Road",
+    "road_class": "secondary",
+    "source": "SAMPLE_APPROX",
+    "is_approx": true,
+    "note": "Hand-placed approximate geometry for demonstration. Not survey or official data."
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      77.589,
+      12.992
+     ],
+     [
+      77.594,
+      12.988
+     ],
+     [
+      77.599,
+      12.984
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Sampige Road",
+    "road_class": "tertiary",
+    "source": "SAMPLE_APPROX",
+    "is_approx": true,
+    "note": "Hand-placed approximate geometry for demonstration. Not survey or official data."
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      77.5705,
+      12.998
+     ],
+     [
+      77.5708,
+      13.004
+     ],
+     [
+      77.5712,
+      13.01
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Dr Rajkumar Road",
+    "road_class": "secondary",
+    "source": "SAMPLE_APPROX",
+    "is_approx": true,
+    "note": "Hand-placed approximate geometry for demonstration. Not survey or official data."
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      77.552,
+      12.993
+     ],
+     [
+      77.553,
+      12.999
+     ],
+     [
+      77.554,
+      13.005
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "100 Feet Road Indiranagar",
+    "road_class": "tertiary",
+    "source": "SAMPLE_APPROX",
+    "is_approx": true,
+    "note": "Hand-placed approximate geometry for demonstration. Not survey or official data."
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      77.6408,
+      12.9795
+     ],
+     [
+      77.641,
+      12.972
+     ],
+     [
+      77.6412,
+      12.965
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "80 Feet Road Koramangala",
+    "road_class": "tertiary",
+    "source": "SAMPLE_APPROX",
+    "is_approx": true,
+    "note": "Hand-placed approximate geometry for demonstration. Not survey or official data."
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      77.6245,
+      12.9352
+     ],
+     [
+      77.6265,
+      12.939
+     ],
+     [
+      77.629,
+      12.944
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Koramangala Inner Ring Road",
+    "road_class": "secondary",
+    "source": "SAMPLE_APPROX",
+    "is_approx": true,
+    "note": "Hand-placed approximate geometry for demonstration. Not survey or official data."
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      77.6245,
+      12.9352
+     ],
+     [
+      77.62,
+      12.93
+     ],
+     [
+      77.616,
+      12.925
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": null,
+    "road_class": "service",
+    "source": "SAMPLE_APPROX",
+    "is_approx": true,
+    "note": "Hand-placed approximate geometry for demonstration. Not survey or official data."
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      77.703,
+      12.9569
+     ],
+     [
+      77.69,
+      12.94
+     ],
+     [
+      77.679,
+      12.926
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": null,
+    "road_class": "service",
+    "source": "SAMPLE_APPROX",
+    "is_approx": true,
+    "note": "Hand-placed approximate geometry for demonstration. Not survey or official data."
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      77.635,
+      13.042
+     ],
+     [
+      77.647,
+      13.03
+     ],
+     [
+      77.658,
+      13.016
+     ]
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,18 @@
+# Secrets and local environment
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+*.db
+
+# Local uploads and private citizen data
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# Downloaded source datasets (obtain from original publishers)
+data/raw/
+.DS_Store

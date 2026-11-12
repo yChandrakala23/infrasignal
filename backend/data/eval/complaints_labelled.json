@@ -1,0 +1,762 @@
+{
+ "note": "SYNTHETIC complaints with hand-set true groups. 'group' is the ground-truth cluster (null = isolated report). days_ago is relative to the moment of loading.",
+ "complaints": [
+  {
+   "lat": 12.916168,
+   "lon": 77.623894,
+   "category": "pothole",
+   "description": "Potholes all over this stretch near the school gate",
+   "days_ago": 1,
+   "group": "H1"
+  },
+  {
+   "lat": 12.916108,
+   "lon": 77.623952,
+   "category": "pothole",
+   "description": "pothole",
+   "days_ago": 23,
+   "group": "H1"
+  },
+  {
+   "lat": 12.916235,
+   "lon": 77.624063,
+   "category": "pothole",
+   "description": "pothole",
+   "days_ago": 30,
+   "group": "H1"
+  },
+  {
+   "lat": 12.916329,
+   "lon": 77.623952,
+   "category": "pothole",
+   "description": "pothole came back after the repair",
+   "days_ago": 36,
+   "group": "H1"
+  },
+  {
+   "lat": 12.916239,
+   "lon": 77.624077,
+   "category": "pothole",
+   "description": "There is a big hole in the road at the petrol bunk",
+   "days_ago": 37,
+   "group": "H1"
+  },
+  {
+   "lat": 12.9161,
+   "lon": 77.624025,
+   "category": "pothole",
+   "description": "Deep pothole, two wheelers skid here",
+   "days_ago": 19,
+   "group": "H1"
+  },
+  {
+   "lat": 12.916302,
+   "lon": 77.623952,
+   "category": "pothole",
+   "description": "Large pothole near the signal",
+   "days_ago": 30,
+   "group": "H1"
+  },
+  {
+   "lat": 12.916123,
+   "lon": 77.623946,
+   "category": "pothole",
+   "description": "Potholes all over this stretch near the metro station",
+   "days_ago": 18,
+   "group": "H1"
+  },
+  {
+   "lat": 12.94378,
+   "lon": 77.690509,
+   "category": "damaged_road",
+   "description": "Road surface broken and uneven near the temple",
+   "days_ago": 1,
+   "group": "H2"
+  },
+  {
+   "lat": 12.943736,
+   "lon": 77.69044,
+   "category": "damaged_road",
+   "description": "Asphalt peeled off and loose gravel on road",
+   "days_ago": 30,
+   "group": "H2"
+  },
+  {
+   "lat": 12.943701,
+   "lon": 77.69057,
+   "category": "damaged_road",
+   "description": "Asphalt peeled off and loose gravel on road",
+   "days_ago": 2,
+   "group": "H2"
+  },
+  {
+   "lat": 12.943823,
+   "lon": 77.690474,
+   "category": "damaged_road",
+   "description": "Asphalt peeled off and loose gravel on road",
+   "days_ago": 3,
+   "group": "H2"
+  },
+  {
+   "lat": 12.943841,
+   "lon": 77.690452,
+   "category": "damaged_road",
+   "description": "Asphalt peeled off and loose gravel on road",
+   "days_ago": 21,
+   "group": "H2"
+  },
+  {
+   "lat": 12.943843,
+   "lon": 77.690537,
+   "category": "damaged_road",
+   "description": "Broken tar road near the school gate",
+   "days_ago": 5,
+   "group": "H2"
+  },
+  {
+   "lat": 12.914321,
+   "lon": 77.653159,
+   "category": "incomplete_work",
+   "description": "Work started and abandoned, material lying",
+   "days_ago": 1,
+   "group": "H3"
+  },
+  {
+   "lat": 12.914407,
+   "lon": 77.653247,
+   "category": "incomplete_work",
+   "description": "Work started and abandoned, material lying",
+   "days_ago": 13,
+   "group": "H3"
+  },
+  {
+   "lat": 12.914511,
+   "lon": 77.65305,
+   "category": "incomplete_work",
+   "description": "Work started and abandoned, material lying",
+   "days_ago": 16,
+   "group": "H3"
+  },
+  {
+   "lat": 12.914477,
+   "lon": 77.653053,
+   "category": "incomplete_work",
+   "description": "Road work left incomplete near the bus stop",
+   "days_ago": 6,
+   "group": "H3"
+  },
+  {
+   "lat": 12.91441,
+   "lon": 77.653114,
+   "category": "incomplete_work",
+   "description": "Half finished road work, trench open near the school gate",
+   "days_ago": 20,
+   "group": "H3"
+  },
+  {
+   "lat": 13.025254,
+   "lon": 77.590219,
+   "category": "pothole",
+   "description": "Crater like pothole, dangerous at night",
+   "days_ago": 1,
+   "group": "H4"
+  },
+  {
+   "lat": 13.025372,
+   "lon": 77.590252,
+   "category": "pothole",
+   "description": "Large pothole near the petrol bunk",
+   "days_ago": 9,
+   "group": "H4"
+  },
+  {
+   "lat": 13.025385,
+   "lon": 77.590164,
+   "category": "pothole",
+   "description": "pothole",
+   "days_ago": 5,
+   "group": "H4"
+  },
+  {
+   "lat": 13.025305,
+   "lon": 77.590323,
+   "category": "pothole",
+   "description": "Crater like pothole, dangerous at night",
+   "days_ago": 12,
+   "group": "H4"
+  },
+  {
+   "lat": 12.924509,
+   "lon": 77.499999,
+   "category": "waterlogging",
+   "description": "Stagnant water on the road for days near the temple",
+   "days_ago": 1,
+   "group": "H5"
+  },
+  {
+   "lat": 12.924391,
+   "lon": 77.500033,
+   "category": "waterlogging",
+   "description": "Water logging here after every rain near the petrol bunk",
+   "days_ago": 20,
+   "group": "H5"
+  },
+  {
+   "lat": 12.924411,
+   "lon": 77.499909,
+   "category": "waterlogging",
+   "description": "Road flooded, drain blocked",
+   "days_ago": 17,
+   "group": "H5"
+  },
+  {
+   "lat": 12.924398,
+   "lon": 77.499872,
+   "category": "waterlogging",
+   "description": "Water logging here after every rain near the temple",
+   "days_ago": 12,
+   "group": "H5"
+  },
+  {
+   "lat": 12.924331,
+   "lon": 77.500095,
+   "category": "waterlogging",
+   "description": "Stagnant water on the road for days near the signal",
+   "days_ago": 3,
+   "group": "H5"
+  },
+  {
+   "lat": 12.968658,
+   "lon": 77.600961,
+   "category": "pothole",
+   "description": "Large pothole near the petrol bunk",
+   "days_ago": 1,
+   "group": "H6"
+  },
+  {
+   "lat": 12.968729,
+   "lon": 77.600976,
+   "category": "pothole",
+   "description": "pothole",
+   "days_ago": 16,
+   "group": "H6"
+  },
+  {
+   "lat": 12.968602,
+   "lon": 77.601169,
+   "category": "pothole",
+   "description": "pothole came back after the repair",
+   "days_ago": 14,
+   "group": "H6"
+  },
+  {
+   "lat": 12.968727,
+   "lon": 77.601122,
+   "category": "pothole",
+   "description": "Deep pothole, two wheelers skid here",
+   "days_ago": 10,
+   "group": "H6"
+  },
+  {
+   "lat": 12.98909,
+   "lon": 77.592669,
+   "category": "footpath",
+   "description": "Pavement damaged, pedestrians walk on road",
+   "days_ago": 1,
+   "group": "H7"
+  },
+  {
+   "lat": 12.988956,
+   "lon": 77.592613,
+   "category": "footpath",
+   "description": "Broken walkway near the school gate",
+   "days_ago": 6,
+   "group": "H7"
+  },
+  {
+   "lat": 12.989066,
+   "lon": 77.592708,
+   "category": "footpath",
+   "description": "Footpath slabs broken near the temple",
+   "days_ago": 1,
+   "group": "H7"
+  },
+  {
+   "lat": 13.001734,
+   "lon": 77.570615,
+   "category": "damaged_road",
+   "description": "Road surface broken and uneven near the petrol bunk",
+   "days_ago": 1,
+   "group": "H8"
+  },
+  {
+   "lat": 13.001593,
+   "lon": 77.570617,
+   "category": "damaged_road",
+   "description": "Road surface broken and uneven near the metro station",
+   "days_ago": 8,
+   "group": "H8"
+  },
+  {
+   "lat": 13.001608,
+   "lon": 77.570798,
+   "category": "damaged_road",
+   "description": "Asphalt peeled off and loose gravel on road",
+   "days_ago": 8,
+   "group": "H8"
+  },
+  {
+   "lat": 12.996929,
+   "lon": 77.552562,
+   "category": "pothole",
+   "description": "Deep pothole, two wheelers skid here",
+   "days_ago": 1,
+   "group": "H9"
+  },
+  {
+   "lat": 12.996834,
+   "lon": 77.552622,
+   "category": "pothole",
+   "description": "Large pothole near the petrol bunk",
+   "days_ago": 8,
+   "group": "H9"
+  },
+  {
+   "lat": 12.996738,
+   "lon": 77.552682,
+   "category": "pothole",
+   "description": "pothole",
+   "days_ago": 11,
+   "group": "H9"
+  },
+  {
+   "lat": 12.996827,
+   "lon": 77.5526,
+   "category": "pothole",
+   "description": "Large pothole near the bus stop",
+   "days_ago": 2,
+   "group": "H9"
+  },
+  {
+   "lat": 12.965754,
+   "lon": 77.606328,
+   "category": "damaged_road",
+   "description": "Asphalt peeled off and loose gravel on road",
+   "days_ago": 1,
+   "group": "H10"
+  },
+  {
+   "lat": 12.965776,
+   "lon": 77.606277,
+   "category": "damaged_road",
+   "description": "Broken tar road near the signal",
+   "days_ago": 2,
+   "group": "H10"
+  },
+  {
+   "lat": 12.96573,
+   "lon": 77.606381,
+   "category": "damaged_road",
+   "description": "Broken tar road near the temple",
+   "days_ago": 1,
+   "group": "H10"
+  },
+  {
+   "lat": 12.969101,
+   "lon": 77.641077,
+   "category": "pothole",
+   "description": "Large pothole near the signal",
+   "days_ago": 1,
+   "group": "H11"
+  },
+  {
+   "lat": 12.969288,
+   "lon": 77.640993,
+   "category": "pothole",
+   "description": "Deep pothole, two wheelers skid here",
+   "days_ago": 1,
+   "group": "H11"
+  },
+  {
+   "lat": 12.969294,
+   "lon": 77.641154,
+   "category": "pothole",
+   "description": "Crater like pothole, dangerous at night",
+   "days_ago": 3,
+   "group": "H11"
+  },
+  {
+   "lat": 13.03217,
+   "lon": 77.532357,
+   "category": "service_lane",
+   "description": "Service road not maintained, garbage and holes",
+   "days_ago": 1,
+   "group": "H12"
+  },
+  {
+   "lat": 13.031975,
+   "lon": 77.532155,
+   "category": "service_lane",
+   "description": "Service road not maintained, garbage and holes",
+   "days_ago": 1,
+   "group": "H12"
+  },
+  {
+   "lat": 13.032007,
+   "lon": 77.532111,
+   "category": "service_lane",
+   "description": "Service lane full of potholes near the petrol bunk",
+   "days_ago": 4,
+   "group": "H12"
+  },
+  {
+   "lat": 12.916209,
+   "lon": 77.624036,
+   "category": "waterlogging",
+   "description": "Road flooded, drain blocked",
+   "days_ago": 2,
+   "group": "D1"
+  },
+  {
+   "lat": 12.916276,
+   "lon": 77.623921,
+   "category": "waterlogging",
+   "description": "Road flooded, drain blocked",
+   "days_ago": 3,
+   "group": "D1"
+  },
+  {
+   "lat": 12.921765,
+   "lon": 77.599679,
+   "category": "pothole",
+   "description": "Pothole near the signal",
+   "days_ago": 5,
+   "group": null
+  },
+  {
+   "lat": 12.921726,
+   "lon": 77.599617,
+   "category": "pothole",
+   "description": "Pothole near the signal",
+   "days_ago": 205,
+   "group": null
+  },
+  {
+   "lat": 12.939787,
+   "lon": 77.626339,
+   "category": "pothole",
+   "description": "Crater like pothole, dangerous at night",
+   "days_ago": 75,
+   "group": null
+  },
+  {
+   "lat": 12.942368,
+   "lon": 77.628018,
+   "category": "service_lane",
+   "description": "Service road not maintained, garbage and holes",
+   "days_ago": 34,
+   "group": null
+  },
+  {
+   "lat": 12.971701,
+   "lon": 77.60679,
+   "category": "waterlogging",
+   "description": "Water logging here after every rain near the bus stop",
+   "days_ago": 59,
+   "group": null
+  },
+  {
+   "lat": 12.935262,
+   "lon": 77.623613,
+   "category": "damaged_road",
+   "description": "Road damaged after digging, not restored",
+   "days_ago": 45,
+   "group": null
+  },
+  {
+   "lat": 12.924198,
+   "lon": 77.599386,
+   "category": "footpath",
+   "description": "Broken walkway near the metro station",
+   "days_ago": 79,
+   "group": null
+  },
+  {
+   "lat": 12.994466,
+   "lon": 77.552275,
+   "category": "service_lane",
+   "description": "Service lane full of potholes near the signal",
+   "days_ago": 34,
+   "group": null
+  },
+  {
+   "lat": 12.982057,
+   "lon": 77.646565,
+   "category": "waterlogging",
+   "description": "Road flooded, drain blocked",
+   "days_ago": 44,
+   "group": null
+  },
+  {
+   "lat": 12.92302,
+   "lon": 77.496912,
+   "category": "incomplete_work",
+   "description": "Work started and abandoned, material lying",
+   "days_ago": 12,
+   "group": null
+  },
+  {
+   "lat": 12.966388,
+   "lon": 77.598658,
+   "category": "damaged_road",
+   "description": "Road damaged after digging, not restored",
+   "days_ago": 57,
+   "group": null
+  },
+  {
+   "lat": 12.974657,
+   "lon": 77.640382,
+   "category": "pothole",
+   "description": "Potholes all over this stretch near the signal",
+   "days_ago": 70,
+   "group": null
+  },
+  {
+   "lat": 12.908398,
+   "lon": 77.62781,
+   "category": "incomplete_work",
+   "description": "Road work left incomplete near the bus stop",
+   "days_ago": 40,
+   "group": null
+  },
+  {
+   "lat": 12.97373,
+   "lon": 77.617964,
+   "category": "waterlogging",
+   "description": "Road flooded, drain blocked",
+   "days_ago": 32,
+   "group": null
+  },
+  {
+   "lat": 12.976796,
+   "lon": 77.633878,
+   "category": "incomplete_work",
+   "description": "Half finished road work, trench open near the petrol bunk",
+   "days_ago": 20,
+   "group": null
+  },
+  {
+   "lat": 12.877768,
+   "lon": 77.560552,
+   "category": "damaged_road",
+   "description": "Broken tar road near the bus stop",
+   "days_ago": 23,
+   "group": null
+  },
+  {
+   "lat": 12.987876,
+   "lon": 77.719771,
+   "category": "service_lane",
+   "description": "Service lane full of potholes near the metro station",
+   "days_ago": 21,
+   "group": null
+  },
+  {
+   "lat": 12.977656,
+   "lon": 77.636777,
+   "category": "damaged_road",
+   "description": "Asphalt peeled off and loose gravel on road",
+   "days_ago": 45,
+   "group": null
+  },
+  {
+   "lat": 12.981511,
+   "lon": 77.541127,
+   "category": "pothole",
+   "description": "Potholes all over this stretch near the signal",
+   "days_ago": 52,
+   "group": null
+  },
+  {
+   "lat": 12.989939,
+   "lon": 77.706774,
+   "category": "waterlogging",
+   "description": "Stagnant water on the road for days near the petrol bunk",
+   "days_ago": 66,
+   "group": null
+  },
+  {
+   "lat": 12.968469,
+   "lon": 77.606646,
+   "category": "pothole",
+   "description": "Large pothole near the metro station",
+   "days_ago": 23,
+   "group": null
+  },
+  {
+   "lat": 12.942066,
+   "lon": 77.628391,
+   "category": "waterlogging",
+   "description": "Stagnant water on the road for days near the school gate",
+   "days_ago": 78,
+   "group": null
+  },
+  {
+   "lat": 12.994159,
+   "lon": 77.552299,
+   "category": "waterlogging",
+   "description": "Water logging here after every rain near the petrol bunk",
+   "days_ago": 56,
+   "group": null
+  },
+  {
+   "lat": 12.918298,
+   "lon": 77.62485,
+   "category": "service_lane",
+   "description": "Service lane full of potholes near the metro station",
+   "days_ago": 56,
+   "group": null
+  },
+  {
+   "lat": 12.930282,
+   "lon": 77.60013,
+   "category": "service_lane",
+   "description": "Service lane full of potholes near the petrol bunk",
+   "days_ago": 39,
+   "group": null
+  },
+  {
+   "lat": 13.000376,
+   "lon": 77.553006,
+   "category": "service_lane",
+   "description": "Service road not maintained, garbage and holes",
+   "days_ago": 17,
+   "group": null
+  },
+  {
+   "lat": 12.908444,
+   "lon": 77.570031,
+   "category": "pothole",
+   "description": "Pothole in the internal layout road, JP Nagar",
+   "days_ago": 7,
+   "group": "OFF12.9085"
+  },
+  {
+   "lat": 12.908532,
+   "lon": 77.570075,
+   "category": "pothole",
+   "description": "Pothole in the internal layout road, JP Nagar",
+   "days_ago": 10,
+   "group": "OFF12.9085"
+  },
+  {
+   "lat": 12.908513,
+   "lon": 77.569983,
+   "category": "pothole",
+   "description": "Pothole in the internal layout road, JP Nagar",
+   "days_ago": 14,
+   "group": "OFF12.9085"
+  },
+  {
+   "lat": 12.95591,
+   "lon": 77.655961,
+   "category": "pothole",
+   "description": "Broken road in layout lane near Domlur",
+   "days_ago": 7,
+   "group": "OFF12.956"
+  },
+  {
+   "lat": 12.956052,
+   "lon": 77.65602,
+   "category": "pothole",
+   "description": "Broken road in layout lane near Domlur",
+   "days_ago": 6,
+   "group": "OFF12.956"
+  },
+  {
+   "lat": 12.955994,
+   "lon": 77.655989,
+   "category": "pothole",
+   "description": "Broken road in layout lane near Domlur",
+   "days_ago": 4,
+   "group": "OFF12.956"
+  }
+ ],
+ "groups": {
+  "H1": {
+   "n": 8,
+   "distinct_days": 7,
+   "expect_alert": true
+  },
+  "H2": {
+   "n": 6,
+   "distinct_days": 6,
+   "expect_alert": true
+  },
+  "H3": {
+   "n": 5,
+   "distinct_days": 5,
+   "expect_alert": true
+  },
+  "H4": {
+   "n": 4,
+   "distinct_days": 4,
+   "expect_alert": true
+  },
+  "H5": {
+   "n": 5,
+   "distinct_days": 5,
+   "expect_alert": true
+  },
+  "H6": {
+   "n": 4,
+   "distinct_days": 4,
+   "expect_alert": true
+  },
+  "H7": {
+   "n": 3,
+   "distinct_days": 2,
+   "expect_alert": true
+  },
+  "H8": {
+   "n": 3,
+   "distinct_days": 2,
+   "expect_alert": true
+  },
+  "H9": {
+   "n": 4,
+   "distinct_days": 4,
+   "expect_alert": true
+  },
+  "H10": {
+   "n": 3,
+   "distinct_days": 2,
+   "expect_alert": true
+  },
+  "H11": {
+   "n": 3,
+   "distinct_days": 2,
+   "expect_alert": true
+  },
+  "H12": {
+   "n": 3,
+   "distinct_days": 2,
+   "expect_alert": true
+  },
+  "D1": {
+   "n": 2,
+   "distinct_days": 2,
+   "expect_alert": false
+  },
+  "OFF12.9085": {
+   "n": 3,
+   "distinct_days": 3,
+   "expect_alert": true
+  },
+  "OFF12.956": {
+   "n": 3,
+   "distinct_days": 3,
+   "expect_alert": true
+  }
+ }
+}

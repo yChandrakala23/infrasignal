@@ -1,0 +1,216 @@
+{
+ "note": "Field values printed in the SAMPLE PDFs. Synthetic, so scores measure the pipeline on easy documents, not real-world accuracy.",
+ "documents": {
+  "A01_nit_hosur_road.pdf": {
+   "doc_type": "nit",
+   "fields": {
+    "tender_id": "SAMPLE/KPPP/2425/T001",
+    "job_number": "SAMPLE/J/2425/001",
+    "work_description": "Asphalting of Hosur Road from Dairy Circle to Silk Board junction",
+    "ward": "233",
+    "department": "Major Roads (sample)",
+    "estimated_cost": "38500000",
+    "document_date": "2024-03-29"
+   }
+  },
+  "A02_boq_hosur_road.pdf": {
+   "doc_type": "boq",
+   "fields": {
+    "tender_id": "SAMPLE/KPPP/2425/T001",
+    "work_description": "Asphalting of Hosur Road from Dairy Circle to Silk Board junction"
+   }
+  },
+  "A03_admin_approval_hosur_road.pdf": {
+   "doc_type": "admin_approval",
+   "fields": {
+    "document_date": "2024-01-14",
+    "job_number": "SAMPLE/J/2425/001",
+    "work_description": "Asphalting of Hosur Road from Dairy Circle to Silk Board junction",
+    "ward": "233",
+    "department": "Major Roads (sample)",
+    "estimated_cost": "38500000"
+   }
+  },
+  "A04_technical_sanction_hosur_road.pdf": {
+   "doc_type": "technical_sanction",
+   "fields": {
+    "document_date": "2024-02-13",
+    "job_number": "SAMPLE/J/2425/001",
+    "work_description": "Asphalting of Hosur Road from Dairy Circle to Silk Board junction",
+    "estimated_cost": "38500000"
+   }
+  },
+  "A05_loa_hosur_road.pdf": {
+   "doc_type": "loa",
+   "fields": {
+    "document_date": "2024-05-31",
+    "tender_id": "SAMPLE/KPPP/2425/T001",
+    "job_number": "SAMPLE/J/2425/001",
+    "work_description": "Asphalting of Hosur Road from Dairy Circle to Silk Board junction",
+    "awarded_amount": "36200000"
+   }
+  },
+  "A06_work_order_hosur_road.pdf": {
+   "doc_type": "work_order",
+   "fields": {
+    "work_order_id": "SAMPLE/WO/2024-25/001",
+    "work_order_date": "2024-06-12",
+    "job_number": "SAMPLE/J/2425/001",
+    "tender_id": "SAMPLE/KPPP/2425/T001",
+    "work_description": "Asphalting of Hosur Road from Dairy Circle to Silk Board junction",
+    "ward": "233",
+    "department": "Major Roads (sample)",
+    "contractor": "Sample Infra Builders Pvt Ltd",
+    "awarded_amount": "36200000",
+    "commencement_date": "2024-06-22",
+    "completion_deadline": "2024-12-12"
+   }
+  },
+  "A07_agreement_hosur_road.pdf": {
+   "doc_type": "agreement",
+   "fields": {
+    "work_id": "SAMPLE/AGR/2024-25/001",
+    "document_date": "2024-06-17",
+    "work_description": "Asphalting of Hosur Road from Dairy Circle to Silk Board junction",
+    "job_number": "SAMPLE/J/2425/001",
+    "awarded_amount": "36200000"
+   }
+  },
+  "A08_running_bill_hosur_road.pdf": {
+   "doc_type": "measurement_book",
+   "fields": {
+    "job_number": "SAMPLE/J/2425/001",
+    "work_order_id": "SAMPLE/WO/2024-25/001",
+    "work_description": "Asphalting of Hosur Road from Dairy Circle to Silk Board junction",
+    "contractor": "Sample Infra Builders Pvt Ltd",
+    "payment_amount": "12066667",
+    "document_date": "2024-09-10"
+   }
+  },
+  "A09_payment_hosur_road.pdf": {
+   "doc_type": "payment_record",
+   "fields": {
+    "job_number": "SAMPLE/J/2425/001",
+    "work_order_id": "SAMPLE/WO/2024-25/001",
+    "contractor": "Sample Infra Builders Pvt Ltd",
+    "work_description": "Asphalting of Hosur Road from Dairy Circle to Silk Board junction",
+    "ward": "233",
+    "payment_amount": "12000000",
+    "payment_date": "2024-10-10"
+   }
+  },
+  "A10_completion_hosur_road.pdf": {
+   "doc_type": "completion_certificate",
+   "fields": {
+    "document_date": "2024-12-21",
+    "job_number": "SAMPLE/J/2425/001",
+    "work_description": "Asphalting of Hosur Road from Dairy Circle to Silk Board junction",
+    "completion_deadline": "2024-12-16"
+   }
+  },
+  "B01_nit_orr.pdf": {
+   "doc_type": "nit",
+   "fields": {
+    "tender_id": "SAMPLE/KPPP/2425/T002",
+    "job_number": "SAMPLE/J/2425/002",
+    "work_description": "Resurfacing of Outer Ring Road service lane and main carriageway near Marathahalli bridge",
+    "ward": "115",
+    "department": "Ward Engineering (sample)",
+    "estimated_cost": "52000000",
+    "document_date": "2024-11-17"
+   }
+  },
+  "B02_work_order_orr.pdf": {
+   "doc_type": "work_order",
+   "fields": {
+    "work_order_id": "SAMPLE/WO/2024-25/002",
+    "work_order_date": "2025-02-05",
+    "job_number": "SAMPLE/J/2425/002",
+    "tender_id": "SAMPLE/KPPP/2425/T002",
+    "work_description": "Resurfacing of Outer Ring Road service lane and main carriageway near Marathahalli bridge",
+    "ward": "115",
+    "department": "Ward Engineering (sample)",
+    "contractor": "Demo Road Works Co",
+    "awarded_amount": "49800000",
+    "commencement_date": "2025-02-15",
+    "completion_deadline": "2025-08-05"
+   }
+  },
+  "B03_payment_orr.pdf": {
+   "doc_type": "payment_record",
+   "fields": {
+    "job_number": "SAMPLE/J/2425/002",
+    "work_order_id": "SAMPLE/WO/2024-25/002",
+    "contractor": "Demo Road Works Co",
+    "work_description": "Resurfacing of Outer Ring Road service lane and main carriageway near Marathahalli bridge",
+    "ward": "115",
+    "payment_amount": "29000000",
+    "payment_date": "2025-05-16"
+   }
+  },
+  "C01_work_order_mg_road_SCANNED.pdf": {
+   "doc_type": "work_order",
+   "fields": {
+    "work_order_id": "SAMPLE/WO/2024-25/003",
+    "work_order_date": "2024-09-20",
+    "job_number": "SAMPLE/J/2425/003",
+    "tender_id": "SAMPLE/KPPP/2425/T003",
+    "work_description": "White topping of MG Road from Anil Kumble Circle to Trinity Circle",
+    "ward": "181",
+    "department": "Project Central (sample)",
+    "contractor": "Placeholder Constructions Ltd",
+    "awarded_amount": "58900000",
+    "commencement_date": "2024-09-30",
+    "completion_deadline": "2025-03-20"
+   }
+  },
+  "C02_payment_mg_road.pdf": {
+   "doc_type": "payment_record",
+   "fields": {
+    "job_number": "SAMPLE/J/2425/003",
+    "work_order_id": "SAMPLE/WO/2024-25/003",
+    "contractor": "Placeholder Constructions Ltd",
+    "work_description": "White topping of MG Road from Anil Kumble Circle to Trinity Circle",
+    "ward": "181",
+    "payment_amount": "47100000",
+    "payment_date": "2025-02-17"
+   }
+  },
+  "D01_loa_conflict.pdf": {
+   "doc_type": "loa",
+   "fields": {
+    "document_date": "2025-05-05",
+    "tender_id": "SAMPLE/KPPP/2526/T005",
+    "job_number": "SAMPLE/J/2526/004",
+    "work_description": "Asphalting of Sarjapur Road from Agara junction towards Bellandur",
+    "awarded_amount": "20100000"
+   }
+  },
+  "X01_nit_orphan_hennur.pdf": {
+   "doc_type": "nit",
+   "fields": {
+    "tender_id": "SAMPLE/KPPP/2526/X801",
+    "work_description": "Widening of Hennur Main Road with drains and footpaths",
+    "department": "Major Roads (sample)",
+    "estimated_cost": "98000000",
+    "document_date": "2026-03-14"
+   }
+  },
+  "F01_work_order_no_ids.pdf": {
+   "doc_type": "work_order",
+   "fields": {
+    "work_description": "Asphalting of Bannerghatta Road between Dairy Circle and Jayadeva junction",
+    "contractor": "Sample Greenline Contractors",
+    "location": "Bannerghatta Road",
+    "awarded_amount": "25900000",
+    "work_order_date": "2025-08-18"
+   }
+  },
+  "Z01_meeting_minutes_other.pdf": {
+   "doc_type": "other",
+   "fields": {
+    "document_date": "2026-02-02"
+   }
+  }
+ }
+}

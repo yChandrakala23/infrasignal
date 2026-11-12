@@ -1,0 +1,64 @@
+{
+ "note": "Second narrative set. Written AFTER the narrative pass was added and never used for tuning.",
+ "documents": {
+  "J01_work_order_memo.pdf": {
+   "doc_type": "work_order",
+   "fields": {
+    "work_order_id": "SAMPLE/WO/J/201",
+    "work_order_date": "2025-03-07",
+    "job_number": "SAMPLE/J/2425/J01",
+    "tender_id": "SAMPLE/KPPP/2425/J01",
+    "contractor": "Sample Patchwork Associates",
+    "awarded_amount": "4560000",
+    "commencement_date": "2025-03-17",
+    "completion_deadline": "2025-06-16",
+    "ward": "174"
+   }
+  },
+  "J02_payment_utr.pdf": {
+   "doc_type": "payment_record",
+   "fields": {
+    "payment_amount": "960000",
+    "payment_date": "2025-11-11",
+    "contractor": "Demo Drainage and Roads Pvt. Ltd.",
+    "job_number": "SAMPLE/J/2425/J02",
+    "work_order_id": "SAMPLE/WO/J/202"
+   }
+  },
+  "J03_tender_notice_short.pdf": {
+   "doc_type": "nit",
+   "fields": {
+    "tender_id": "SAMPLE/NIT/2526/J03",
+    "estimated_cost": "38000000",
+    "ward": "9"
+   }
+  },
+  "J04_technical_sanction.pdf": {
+   "doc_type": "technical_sanction",
+   "fields": {
+    "estimated_cost": "72500000",
+    "job_number": "SAMPLE/J/2526/J04",
+    "ward": "111",
+    "document_date": "2025-04-30"
+   }
+  },
+  "J05_completion_note.pdf": {
+   "doc_type": "completion_certificate",
+   "fields": {
+    "work_order_id": "SAMPLE/WO/J/205",
+    "contractor": "Placeholder Asphalt Works",
+    "document_date": "2026-01-15"
+   }
+  },
+  "J06_agreement_prose.pdf": {
+   "doc_type": "agreement",
+   "fields": {
+    "work_id": "SAMPLE/AGR/J/206",
+    "contractor": "Demo Civil Contractors",
+    "awarded_amount": "11200000",
+    "job_number": "SAMPLE/J/2425/J06",
+    "ward": "177"
+   }
+  }
+ }
+}

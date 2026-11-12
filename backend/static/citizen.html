@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>InfraSignal: report and follow Bengaluru road problems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<link rel="stylesheet" href="/static/vendor/leaflet/leaflet.css">
+<link rel="stylesheet" href="/static/css/app.css">
+<style>:root{--accent:var(--citizen)}
+.hero{display:grid;grid-template-columns:340px 1fr;gap:0;min-height:calc(100vh - 52px - 34px)}
+.panel{background:var(--card);border-right:1px solid var(--line);padding:16px;overflow:auto;max-height:calc(100vh - 52px - 34px)}
+.hero .map{height:100%;min-height:480px;border:0;border-radius:0}
+.roadpick{display:block;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);padding:8px 2px;cursor:pointer}
+.roadpick:hover{background:var(--paper)}
+@media (max-width:860px){.hero{grid-template-columns:1fr}.panel{max-height:none;border-right:0;border-bottom:1px solid var(--line)}.hero .map{height:62vh}}
+.report-wrap{max-width:1100px;margin:0 auto;padding:16px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}
+@media (max-width:860px){.report-wrap{grid-template-columns:1fr}}
+.where{border-left:5px solid var(--citizen);padding:8px 12px;background:var(--paper);margin:8px 0;border-radius:var(--r)}
+.photo-prev{display:flex;gap:8px;margin-top:6px}.photo-prev img{width:72px;height:72px;object-fit:cover;border-radius:var(--r);border:1px solid var(--line)}
+.receipt{border:2px solid var(--citizen);border-radius:var(--r);padding:16px;background:var(--card)}
+.receipt .code{font:700 1.5rem var(--font-head);letter-spacing:.04em}
+.steps{list-style:none;margin:0;padding:0}.steps li{padding:6px 0 6px 22px;border-left:3px solid var(--citizen);margin-left:6px;position:relative}.steps li::before{content:"";position:absolute;left:-8px;top:12px;width:13px;height:13px;border-radius:50%;background:var(--citizen)}
+section[hidden]{display:none}
+</style></head>
+<body>
+<header class="topbar"><a class="brand" href="/citizen"><i></i>InfraSignal</a><span class="area">Public portal</span>
+<nav class="tabs" role="tablist" aria-label="Sections"><button role="tab" data-t="map" aria-selected="true">Road map</button><button role="tab" data-t="report" aria-selected="false">Report a problem</button><button role="tab" data-t="track" aria-selected="false">Track a report</button><button role="tab" data-t="about" aria-selected="false">About the data</button></nav>
+<span class="spacer"></span><a class="link" href="/gov">Officer sign-in</a></header>
+<div class="banner" id="banner" hidden></div>
+
+<section id="map" role="tabpanel">
+ <div class="hero">
+  <div class="panel">
+   <h1>Bengaluru road map</h1>
+   <p class="muted">Every mapped road is listed, with or without a government record. Select a road to see its reports and any linked work.</p>
+   <label for="rq">Find a road</label><input id="rq" type="search" placeholder="e.g. Hosur Road" autocomplete="off">
+   <div id="rres"></div>
+   <div id="rprofile"></div>
+   <h4 style="margin-top:16px">Map key</h4>
+   <div class="legend" style="flex-direction:column;gap:4px">
+    <span style="color:#5b6770">Road, no reports</span><span style="color:#c4781a">Road with 1–2 reports</span><span style="color:#b3261e">Road with 3 or more reports</span></div>
+   <p class="small muted" style="margin-top:8px">Large circles are groups of similar reports close together. Small dots are single reports. Reports are submitted by citizens and are not confirmed faults.</p>
+   <label class="row" style="font-weight:400"><input type="checkbox" id="wardsOn" style="width:auto;min-height:0"> Show ward boundaries</label>
+   <p class="small muted" id="mapnote"></p>
+  </div>
+  <div id="pub" class="map" aria-label="Map of reported road problems"></div>
+ </div>
+</section>
+
+<section id="report" role="tabpanel" hidden>
+ <div class="report-wrap">
+  <div>
+   <h1>Report a road problem</h1>
+   <p>Place a pin where the problem is. The nearest road and ward are found automatically.</p>
+   <div class="row"><button type="button" class="btn" id="gpsBtn">Use my location</button><span class="muted small">or tap the map</span></div>
+   <div id="pick" class="map" style="margin-top:10px" aria-label="Choose the location"></div>
+   <div id="locbox" class="where muted">No location chosen yet.</div>
+  </div>
+  <form id="f" novalidate>
+   <label for="cat">What is the problem?</label><select id="cat" name="category" required></select>
+   <label for="desc">What do you see? <span class="hint">(optional, up to 1000 characters)</span></label><textarea id="desc" name="description" rows="3" maxlength="1000"></textarea>
+   <label for="rn">Road or landmark <span class="hint">(optional)</span></label><input id="rn" name="road_name" maxlength="200" placeholder="e.g. 80 Feet Road near the bus stop">
+   <label for="ph">Photos <span class="hint">(up to 3, each under 5 MB; location data inside photos is removed)</span></label><input id="ph" type="file" accept="image/*" multiple capture="environment">
+   <div class="photo-prev" id="prev"></div>
+   <label for="ct">Contact <span class="hint">(optional, private; never shown publicly)</span></label><input id="ct" name="contact" maxlength="200" placeholder="Phone or email, only if you want to be reached">
+   <p id="ferr" class="notice bad" role="alert" hidden></p>
+   <button class="btn primary block" style="margin-top:14px" id="submitBtn">Send report</button>
+   <div id="done" aria-live="polite" style="margin-top:14px"></div>
+  </form>
+ </div>
+</section>
+
+<section id="track" role="tabpanel" hidden><div class="page" style="max-width:640px">
+ <h1>Track a report</h1><p class="muted">Enter the reference and the tracking code you were given when you sent the report.</p>
+ <form id="tf" class="card"><label for="ref">Reference</label><input id="ref" required placeholder="IS1A2B3C4D"><label for="tok">Tracking code</label><input id="tok" required autocomplete="off">
+ <button class="btn block" style="margin-top:12px">Check status</button></form><div id="tr" aria-live="polite" style="margin-top:14px"></div></div></section>
+
+<section id="about" role="tabpanel" hidden><div class="page" style="max-width:760px">
+ <h1>About the data</h1>
+ <p>InfraSignal puts three kinds of information on one map. They are kept apart so you can see how much to trust each one.</p>
+ <div class="card" style="margin:12px 0"><div class="legend" style="flex-direction:column;gap:10px;font-size:.95rem">
+  <div><span class="badge b-official">Government record</span> A work order, tender or document published by a public body. A link to a road is marked <i>verified</i> only after an officer confirmed it.</div>
+  <div><span class="badge b-inferred">Inferred</span> Matched by the system from a road name and ward. It may be wrong and has not been confirmed.</div>
+  <div><span class="badge b-citizen">Citizen-submitted</span> What people reported. A cluster of reports shows a recurring complaint. It does not show who is responsible.</div></div></div>
+ <ul><li>A road with no government record is still shown. "No record found" means none was loaded so far, not that nothing was done.</li>
+ <li>A payment record is never treated as proof that work was finished.</li>
+ <li>Reports marked <span class="badge b-sample">SAMPLE</span> are synthetic demonstration data, not real complaints.</li>
+ <li>Road shapes in the demonstration are approximate and hand-placed. Real centrelines can be loaded by an administrator.</li>
+ <li>Your contact details and photos are visible only to authorised staff.</li></ul></div></section>
+
+<script src="/static/vendor/leaflet/leaflet.js"></script>
+<script src="/static/js/common.js"></script>
+<script src="/static/js/citizen.js"></script>
+</body></html>
