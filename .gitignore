@@ -16,3 +16,4 @@ backend/uploads/*
 # Downloaded source datasets (obtain from original publishers)
 data/raw/
 .DS_Store
+backend/logs/

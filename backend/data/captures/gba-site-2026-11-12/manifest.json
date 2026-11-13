@@ -1,0 +1,4 @@
+{"captured_at": "2026-11-12T17:58:00+05:30", "source_page": "https://bbmp.gov.in/", "captured_with": "Claude desktop browser pane on the user's PC",
+ "documents": [
+  {"file": "TENDER_DOCUMENT_TOWNPLANNING.pdf", "url": "https://bbmp.gov.in/csr/TENDER_DOCUMENT_TOWNPLANNING.pdf", "bytes": 2753974, "sha256": "ce4eb0d13d83b76d42c2f2d1c07d41f5493119704553a84af0f85d5cf8eaef08", "etag": "W/\"2753974-1767960015000\"", "last_modified": "Fri, 09 Jan 2026 12:00:15 GMT"},
+  {"file": "RetiredEmployeeNotification.pdf", "url": "https://bbmp.gov.in/Notification_Files/RetiredEmployeeNotification.pdf", "bytes": 1771858, "sha256": "147557ee41e86c3fb7e5cf05b6bfaa2bb9c3d4a55b8d313754139f641df60afe", "etag": "W/\"1771858-1791011558000\"", "last_modified": "Sat, 03 Oct 2026 07:12:38 GMT"}]}

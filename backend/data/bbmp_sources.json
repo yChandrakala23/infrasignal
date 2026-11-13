@@ -1,0 +1,127 @@
+{
+ "_comment": "Datasets the BBMP connector collects. Download URLs are never listed here: they are discovered from the dataset page on every run because they can change. 'column_overrides' maps a canonical field to an exact header when a file's header is not recognised (see app/bbmp_schema.py COLUMN_SYNONYMS). Edit this file or point BBMP_SOURCES_FILE at another one.",
+ "source_website": "https://data.opencity.in",
+ "datasets": [
+  {
+   "slug": "bbmp-work-orders-and-payments-2024-25",
+   "url": "https://data.opencity.in/dataset/bbmp-work-orders-and-payments-2024-25",
+   "fiscal_year": "2024-25",
+   "enabled": true,
+   "column_overrides": {}
+  },
+  {
+   "slug": "bbmp-work-orders-2023-24",
+   "url": "https://data.opencity.in/dataset/bbmp-work-orders-2023-24",
+   "fiscal_year": "2023-24",
+   "enabled": true,
+   "column_overrides": {},
+   "default_ward_regime": "198"
+  },
+  {
+   "slug": "bbmp-work-orders-and-payments-2025-26",
+   "url": "https://data.opencity.in/dataset/bbmp-work-orders-and-payments-2025-26",
+   "fiscal_year": "2025-26",
+   "enabled": true,
+   "column_overrides": {}
+  }
+ ],
+ "site_pages": [
+  {
+   "url": "https://site.bbmp.gov.in/",
+   "enabled": true,
+   "note": "Official site: scanned for links to CSV / Excel files. Not available to the developers when this was written, so what it offers is unknown."
+  }
+ ],
+ "crawl_sources": [
+  {
+   "name": "GBA / BBMP official website",
+   "seeds": [
+    "https://bbmp.gov.in/"
+   ],
+   "allowed_hosts": [
+    "bbmp.gov.in"
+   ],
+   "document_hosts": [
+    "updates.bbmpgov.in",
+    "site.bbmp.gov.in"
+   ],
+   "max_depth": 2,
+   "max_pages": 30,
+   "max_documents": 40,
+   "render": "auto",
+   "exclude_patterns": [
+    "copyright-policy",
+    "privacypolicy",
+    "hyperlink-policy"
+   ],
+   "enabled": true,
+   "note": "React app (checked 12 Nov 2026): the static HTML has no links; notices, tenders and PDF links are in /static/js/main.*.js, which the crawler reads. Playwright (BBMP_USE_PLAYWRIGHT=1) is the fallback. On 12 Nov 2026 the bundle listed 89 PDFs, 77 of them land-use maps (listed, not downloaded: skip_download_patterns).",
+   "skip_download_patterns": [
+    "/landusemaps/"
+   ]
+  },
+  {
+   "name": "BBMP legacy site",
+   "seeds": [
+    "https://site.bbmp.gov.in/"
+   ],
+   "allowed_hosts": [
+    "site.bbmp.gov.in"
+   ],
+   "document_hosts": [
+    "bbmp.gov.in",
+    "updates.bbmpgov.in"
+   ],
+   "max_depth": 2,
+   "max_pages": 30,
+   "max_documents": 30,
+   "enabled": true,
+   "note": "Old BBMP site; kept in case it still serves tender and work lists."
+  },
+  {
+   "name": "OpenCity BBMP datasets",
+   "seeds": [
+    "https://data.opencity.in/dataset/?q=bbmp+work+orders",
+    "https://data.opencity.in/dataset/?q=bbmp+tenders",
+    "https://data.opencity.in/dataset/?q=bbmp+budget"
+   ],
+   "allowed_hosts": [
+    "data.opencity.in"
+   ],
+   "max_depth": 1,
+   "max_pages": 40,
+   "max_documents": 20,
+   "follow_keywords": [
+    "/dataset/bbmp",
+    "/dataset/gba"
+   ],
+   "exclude_patterns": [
+    "/user/",
+    "/api/",
+    "activity",
+    "/groups",
+    "/organization/"
+   ],
+   "enabled": true,
+   "note": "Finds BBMP datasets that are not yet in the 'datasets' list above and lists their files."
+  }
+ ],
+ "discover_query": "bbmp work orders",
+ "discover_slug_keywords": [
+  "work-order"
+ ],
+ "ifms": {
+  "enabled": true,
+  "url": "https://accounts.bbmp.gov.in/PublicView/",
+  "search_terms": [
+   "road",
+   "asphalt",
+   "white topping",
+   "footpath",
+   "drain",
+   "pothole"
+  ],
+  "max_rows_per_term": 5000,
+  "note": "BBMP IFMS 'Works Bill Public View'. Public search, no login or CAPTCHA. On 12-13 Nov 2026 its data service (vss00CvStatusData.php) answered HTTP 500 with an empty body to every request, including the page's own requests, so no data could be read."
+ }
+}

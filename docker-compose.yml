@@ -1,3 +1,5 @@
+# docker compose up --build      then open http://localhost:8000/citizen , /gov , /authority
+# Copy .env.example to .env first and replace every CHANGE_ME value.
 services:
   db:
     image: postgis/postgis:16-3.4
@@ -5,13 +7,21 @@ services:
       POSTGRES_USER: infra
       POSTGRES_PASSWORD: infra
       POSTGRES_DB: infrasignal
-    ports: ["5432:5432"]
+    ports: ["127.0.0.1:5432:5432"]
     volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U infra -d infrasignal"]
+      interval: 5s
+      retries: 10
   api:
     build: ./backend
     env_file: .env
-    depends_on: [db]
+    depends_on:
+      db: {condition: service_healthy}
     ports: ["8000:8000"]
-    volumes: ["./backend/uploads:/app/uploads"]
+    volumes:
+      - ./backend/uploads:/app/uploads
+      - docs:/app/data/uploads
 volumes:
   pgdata:
+  docs:

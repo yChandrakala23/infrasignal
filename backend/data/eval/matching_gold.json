@@ -1,0 +1,135 @@
+{
+ "documents": {
+  "A01_nit_hosur_road.pdf": {
+   "work_job": "SAMPLE/J/2425/001",
+   "note": ""
+  },
+  "A02_boq_hosur_road.pdf": {
+   "work_job": "SAMPLE/J/2425/001",
+   "note": "BOQ total is not equal to the estimate on purpose"
+  },
+  "A03_admin_approval_hosur_road.pdf": {
+   "work_job": "SAMPLE/J/2425/001",
+   "note": ""
+  },
+  "A04_technical_sanction_hosur_road.pdf": {
+   "work_job": "SAMPLE/J/2425/001",
+   "note": ""
+  },
+  "A05_loa_hosur_road.pdf": {
+   "work_job": "SAMPLE/J/2425/001",
+   "note": ""
+  },
+  "A06_work_order_hosur_road.pdf": {
+   "work_job": "SAMPLE/J/2425/001",
+   "note": ""
+  },
+  "A07_agreement_hosur_road.pdf": {
+   "work_job": "SAMPLE/J/2425/001",
+   "note": ""
+  },
+  "A08_running_bill_hosur_road.pdf": {
+   "work_job": "SAMPLE/J/2425/001",
+   "note": ""
+  },
+  "A09_payment_hosur_road.pdf": {
+   "work_job": "SAMPLE/J/2425/001",
+   "note": ""
+  },
+  "A10_completion_hosur_road.pdf": {
+   "work_job": "SAMPLE/J/2425/001",
+   "note": ""
+  },
+  "B01_nit_orr.pdf": {
+   "work_job": "SAMPLE/J/2425/002",
+   "note": ""
+  },
+  "B02_work_order_orr.pdf": {
+   "work_job": "SAMPLE/J/2425/002",
+   "note": ""
+  },
+  "B03_payment_orr.pdf": {
+   "work_job": "SAMPLE/J/2425/002",
+   "note": ""
+  },
+  "C01_work_order_mg_road_SCANNED.pdf": {
+   "work_job": "SAMPLE/J/2425/003",
+   "note": "scanned image only: exercises OCR"
+  },
+  "C02_payment_mg_road.pdf": {
+   "work_job": "SAMPLE/J/2425/003",
+   "note": ""
+  },
+  "D01_loa_conflict.pdf": {
+   "work_job": "SAMPLE/J/2526/004",
+   "note": "CONFLICT: job number points to work D, tender id points to work E. Must not be auto-merged."
+  },
+  "X01_nit_orphan_hennur.pdf": {
+   "work_job": null,
+   "note": "orphan: tender not in any work"
+  },
+  "F01_work_order_no_ids.pdf": {
+   "work_job": "SAMPLE/J/2526/006",
+   "note": "no identifiers: only contractor + road + description + amount can link it (fuzzy, needs manual verification)"
+  },
+  "Z01_meeting_minutes_other.pdf": {
+   "work_job": null,
+   "note": "should stay unclassified and unmatched"
+  }
+ },
+ "tenders": {
+  "SAMPLE/KPPP/2425/T001": "SAMPLE/J/2425/001",
+  "SAMPLE/KPPP/2425/T002": "SAMPLE/J/2425/002",
+  "SAMPLE/KPPP/2425/T003": "SAMPLE/J/2425/003",
+  "SAMPLE/KPPP/2526/T004": "SAMPLE/J/2526/004",
+  "SAMPLE/KPPP/2526/T005": "SAMPLE/J/2526/005",
+  "SAMPLE/KPPP/2425/T009": "SAMPLE/J/2425/009",
+  "SAMPLE/KPPP/2425/T011": "SAMPLE/J/2425/011",
+  "SAMPLE/KPPP/2526/T012": "SAMPLE/J/2526/012",
+  "SAMPLE/KPPP/2324/T013": "SAMPLE/J/2324/013",
+  "SAMPLE/KPPP/2425/T015": "SAMPLE/J/2425/015",
+  "SAMPLE/KPPP/2324/T016": "SAMPLE/J/2324/016",
+  "SAMPLE/KPPP/2627/T017": "SAMPLE/J/2627/017",
+  "SAMPLE/KPPP/2627/T020": "SAMPLE/J/2627/020",
+  "SAMPLE/KPPP/2526/F901": "SAMPLE/J/2526/006",
+  "SAMPLE/KPPP/2526/F902": "SAMPLE/J/2526/007",
+  "SAMPLE/KPPP/2526/F903": "SAMPLE/J/2526/008",
+  "SAMPLE/KPPP/2526/F904": "SAMPLE/J/2526/010",
+  "SAMPLE/KPPP/2526/X801": null,
+  "SAMPLE/KPPP/2526/X802": null,
+  "SAMPLE/KPPP/2627/X803": null,
+  "SAMPLE/KPPP/2526/X804": null
+ },
+ "work_road": {
+  "SAMPLE/J/2425/001": "Hosur Road",
+  "SAMPLE/J/2425/002": "Outer Ring Road (Hebbal to Silk Board section)",
+  "SAMPLE/J/2425/003": "MG Road",
+  "SAMPLE/J/2526/004": "Sarjapur Road",
+  "SAMPLE/J/2526/005": "Kanakapura Road",
+  "SAMPLE/J/2526/006": "Bannerghatta Road",
+  "SAMPLE/J/2526/007": "100 Feet Road Indiranagar",
+  "SAMPLE/J/2526/008": "80 Feet Road Koramangala",
+  "SAMPLE/J/2425/009": "Bellary Road",
+  "SAMPLE/J/2526/010": "Bellary Road",
+  "SAMPLE/J/2425/011": "Old Madras Road",
+  "SAMPLE/J/2526/012": "Old Madras Road",
+  "SAMPLE/J/2324/013": "Mysore Road",
+  "SAMPLE/J/2526/014": "Mysore Road",
+  "SAMPLE/J/2425/015": "Tumkur Road",
+  "SAMPLE/J/2324/016": "Magadi Road",
+  "SAMPLE/J/2627/017": "Whitefield Main Road",
+  "SAMPLE/J/2627/018": "Hosur Road",
+  "SAMPLE/J/2627/019": "Outer Ring Road (Hebbal to Silk Board section)",
+  "SAMPLE/J/2627/020": "Sarjapur Road"
+ },
+ "no_road_expected": [
+  "SAMPLE/J/2526/021",
+  "SAMPLE/J/2526/022",
+  "SAMPLE/J/2526/023",
+  "SAMPLE/J/2526/024",
+  "SAMPLE/J/2526/025",
+  "SAMPLE/J/2526/026",
+  "SAMPLE/J/2526/027",
+  "SAMPLE/J/2526/028"
+ ]
+}
